@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - 100redes.eu</title>
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="About 100redes.eu">
+    <meta property="og:description" content="Digital sovereignty and privacy for civil society. Free cultural information platform.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://100redes.eu/about.html">
+    
+    <!-- Favicon intégré -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58.862274 58.866558'%3E%3Cg transform='translate(-117.475,-56.356249)'%3E%3Cpath fill='%231465ff' d='m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z'/%3E%3Cpath fill='%23ffffff' d='m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z'/%3E%3Ccircle fill='%2318207d' cx='153.08864' cy='89.09008' r='1.7464216'/%3E%3Ccircle fill='%2318207d' cx='141.04666' cy='89.09008' r='1.7464216'/%3E%3C/g%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+        
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #1465ff;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #1465ff;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #1465ff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            background: #1465ff;
+            color: #fff;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #1465ff;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1465ff;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin: 2rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: #333;
+        }
+        
+        .highlight {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-left: 4px solid #1465ff;
+            margin: 2rem 0;
+        }
+        
+        .principles {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .principle-card {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .principle-card h3 {
+            margin-top: 0;
+            color: #1465ff;
+        }
+        
+        strong {
+            color: #1465ff;
+        }
+        
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 58.862274 58.866558" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(-117.475,-56.356249)">
+                        <path style="fill:#1465ff;fill-opacity:1;" d="m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z" />
+                        <path style="fill:#ffffff;" d="m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z" />
+                        <circle style="fill:#18207d;fill-opacity:1;" cx="153.08864" cy="89.09008" r="1.7464216" />
+                        <circle style="fill:#18207d;fill-opacity:1;" cx="141.04666" cy="89.09008" r="1.7464216" />
+                    </g>
+                </svg>
+            </div>
+            <h1 id="pageTitle">Sobre a Plataforma</h1>
+            <p class="tagline" id="tagline">Soberania Digital para a Sociedade Civil</p>
+            <a href="index.html" class="back-link" id="backLink">← Voltar à Página Inicial</a>
+        </header>
+
+        <section>
+            <h2 id="section1Title">O Que é 100redes.eu?</h2>
+            <p id="section1P1">
+                <strong>100redes.eu</strong> é uma plataforma ética de informação cultural que coloca os direitos digitais no centro da experiência do utilizador. Num mundo onde a extração massiva de dados pessoais se tornou a norma, oferecemos uma alternativa que respeita a tua privacidade e autonomia digital.
+            </p>
+            <p id="section1P2">
+                Acreditamos que o acesso à vida pública e cultural não deve exigir o sacrifício dos teus direitos fundamentais. Por isso, construímos uma plataforma que te permite descobrir eventos culturais sem rastreamento, sem cookies invasivos, e sem a venda dos teus dados a terceiros.
+            </p>
+        </section>
+
+        <section>
+            <h2 id="section2Title">Porquê Esta Plataforma é Importante?</h2>
+            
+            <h3 id="section2H3_1">Soberania Digital</h3>
+            <p id="section2P1">
+                A <strong>soberania digital</strong> significa o direito de controlar os teus próprios dados e a tua presença online. As grandes empresas tecnológicas (Big Tech) construíram modelos de negócio baseados na extração e monetização dos dados pessoais dos utilizadores. Cada clique, cada pesquisa, cada interação é registada, analisada e vendida.
+            </p>
+            <p id="section2P2">
+                Esta plataforma representa uma resistência ativa contra este modelo. Defendemos que a sociedade civil deve ter acesso a infraestruturas digitais que não comprometam os direitos fundamentais.
+            </p>
+
+            <h3 id="section2H3_2">Privacidade como Direito Fundamental</h3>
+            <p id="section2P3">
+                A privacidade não é um luxo ou uma opção — é um <strong>direito humano fundamental</strong>. Organizações como a noyb (None of Your Business) têm demonstrado através de centenas de casos legais que as empresas tecnológicas violam sistematicamente as leis de proteção de dados, como o RGPD.
+            </p>
+            <p id="section2P4">
+                Com mais de <strong>€2 mil milhões em multas</strong> impostas a empresas que violam a privacidade dos utilizadores, está claro que o modelo atual é insustentável e prejudicial. A 100redes.eu oferece uma alternativa concreta.
+            </p>
+
+            <h3 id="section2H3_3">Acesso Livre à Cultura</h3>
+            <p id="section2P5">
+                A cultura é um bem comum. O acesso à informação sobre eventos culturais não deve estar condicionado à aceitação de termos abusivos ou à partilha forçada de dados pessoais. Defendemos que a <strong>informação cultural deve ser livre e acessível</strong> sem custos ocultos para a tua privacidade.
+            </p>
+        </section>
+
+        <section>
+            <h2 id="section3Title">Os Nossos Princípios</h2>
+            
+            <div class="principles">
+                <div class="principle-card">
+                    <h3 id="principle1Title">🔒 Zero Rastreamento</h3>
+                    <p id="principle1Text">Não utilizamos cookies de rastreamento, não partilhamos dados com terceiros, e não construímos perfis de utilizadores. A tua navegação é privada.</p>
+                </div>
+
+                <div class="principle-card">
+                    <h3 id="principle2Title">🌍 Código Aberto e Transparente</h3>
+                    <p id="principle2Text">Acreditamos na transparência. O nosso código é aberto, auditável, e desenvolvido com tecnologias que respeitam a liberdade do utilizador.</p>
+                </div>
+
+                <div class="principle-card">
+                    <h3 id="principle3Title">⚖️ Conformidade com RGPD</h3>
+                    <p id="principle3Text">Cumprimos rigorosamente as leis de proteção de dados. Não pedimos consentimento porque não recolhemos dados desnecessários.</p>
+                </div>
+
+                <div class="principle-card">
+                    <h3 id="principle4Title">🌐 Acessibilidade Universal</h3>
+                    <p id="principle4Text">A plataforma está disponível em 30 línguas europeias, garantindo que a informação cultural seja acessível a todos.</p>
+                </div>
+
+                <div class="principle-card">
+                    <h3 id="principle5Title">🛡️ Soberania e Autonomia</h3>
+                    <p id="principle5Text">Defendemos o direito da sociedade civil a infraestruturas digitais que não dependam de empresas que monetizam dados pessoais.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 id="section4Title">O Contexto Europeu</h2>
+            <p id="section4P1">
+                A Europa está a liderar o debate sobre <strong>soberania digital</strong>. Organizações como a Internet Society (ISOC) questionam: "O que significa soberania digital para a sociedade civil?" Esta plataforma é uma resposta prática a essa questão.
+            </p>
+            <p id="section4P2">
+                Enquanto as instituições europeias debatem regulamentação, nós construímos alternativas concretas. Inspirados pelo trabalho de organizações como a Free Software Foundation Europe (FSFE), a <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia, e noyb, demonstramos que é possível criar serviços digitais que respeitam os utilizadores.
+            </p>
+
+            <div class="highlight">
+                <p id="highlightText"><strong>A nossa missão:</strong> Partilhar eventos locais sem vigilância nem exploração de dados pessoais.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2 id="section5Title">Entre Nós: Consulta-nos em Privado</h2>
+            <p id="section5P1">
+                Ao utilizares a 100redes.eu, não estás apenas a descobrir eventos culturais. Estás a apoiar um modelo alternativo de internet — um modelo que coloca as pessoas antes dos lucros, a privacidade antes da vigilância, e a liberdade antes do controlo.
+            </p>
+            <p id="section5P2">
+                <strong>Juntos, podemos construir uma internet mais justa, mais livre, e mais respeitadora dos direitos humanos.</strong>
+            </p>
+        </section>
+
+        <footer style="text-align: center; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #e0e0e0;">
+            <a href="index.html" class="back-link" id="backLinkFooter">← Voltar à Página Inicial</a>
+            
+            <!-- Sélecteur de langue -->
+            <div class="language-selector" style="margin-top: 1.5rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+                <button class="lang-btn" data-lang="pt" style="padding: 0.4rem 0.8rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.8rem; transition: all 0.3s;">PT</button>
+                <button class="lang-btn" data-lang="fr" style="padding: 0.4rem 0.8rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.8rem; transition: all 0.3s;">FR</button>
+                <button class="lang-btn" data-lang="en" style="padding: 0.4rem 0.8rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.8rem; transition: all 0.3s;">EN</button>
+                <button class="lang-btn" data-lang="es" style="padding: 0.4rem 0.8rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.8rem; transition: all 0.3s;">ES</button>
+                <button class="lang-btn" data-lang="de" style="padding: 0.4rem 0.8rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.8rem; transition: all 0.3s;">DE</button>
+                <button class="lang-btn" data-lang="it" style="padding: 0.4rem 0.8rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.8rem; transition: all 0.3s;">IT</button>
+            </div>
+            
+            <!-- Copyright et liens légaux -->
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                © 2026 100redes.eu | 
+                <a href="LICENSE" style="color: #1465ff; text-decoration: none;">Licence MIT</a> | 
+                <a href="legal.html" style="color: #1465ff; text-decoration: none;">Mentions Légales</a> | 
+                <a href="https://github.com/votre-repo" target="_blank" rel="noopener noreferrer" style="color: #1465ff; text-decoration: none;">Code Source</a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Système de traduction multilingue
+        const translations = {
+            pt: {
+                pageTitle: "Sobre a Plataforma",
+                tagline: "Soberania Digital para a Sociedade Civil",
+                backLink: "← Voltar à Página Inicial",
+                backLinkFooter: "← Voltar à Página Inicial",
+                section1Title: "O Que é 100redes.eu?",
+                section1P1: "<strong>100redes.eu</strong> é uma plataforma ética de informação cultural que coloca os direitos digitais no centro da experiência do utilizador. Num mundo onde a extração massiva de dados pessoais se tornou a norma, oferecemos uma alternativa que respeita a tua privacidade e autonomia digital.",
+                section1P2: "Acreditamos que o acesso à vida pública e cultural não deve exigir o sacrifício dos teus direitos fundamentais. Por isso, construímos uma plataforma que te permite descobrir eventos culturais sem rastreamento, sem cookies invasivos, e sem a venda dos teus dados a terceiros.",
+                section2Title: "Porquê Esta Plataforma é Importante?",
+                section2H3_1: "Soberania Digital",
+                section2P1: "A <strong>soberania digital</strong> significa o direito de controlar os teus próprios dados e a tua presença online. As grandes empresas tecnológicas (Big Tech) construíram modelos de negócio baseados na extração e monetização dos dados pessoais dos utilizadores. Cada clique, cada pesquisa, cada interação é registada, analisada e vendida.",
+                section2P2: "Esta plataforma representa uma resistência ativa contra este modelo. Defendemos que a sociedade civil deve ter acesso a infraestruturas digitais que não comprometam os direitos fundamentais.",
+                section2H3_2: "Privacidade como Direito Fundamental",
+                section2P3: "A privacidade não é um luxo ou uma opção — é um <strong>direito humano fundamental</strong>. Organizações como a noyb (None of Your Business) têm demonstrado através de centenas de casos legais que as empresas tecnológicas violam sistematicamente as leis de proteção de dados, como o RGPD.",
+                section2P4: "Com mais de <strong><a href='https://www.enforcementtracker.com/' target='_blank' rel='noopener noreferrer'>€2 mil milhões em multas</a></strong> impostas a empresas que violam a privacidade dos utilizadores, está claro que o modelo atual é insustentável e prejudicial. A 100redes.eu oferece uma alternativa concreta.",
+                section2H3_3: "Acesso Livre à Cultura",
+                section2P5: "A cultura é um bem comum. O acesso à informação sobre eventos culturais não deve estar condicionado à aceitação de termos abusivos ou à partilha forçada de dados pessoais. Defendemos que a <strong>informação cultural deve ser livre e acessível</strong> sem custos ocultos para a tua privacidade.",
+                section3Title: "Os Nossos Princípios",
+                principle1Title: "🔒 Zero Rastreamento",
+                principle1Text: "Não utilizamos cookies de rastreamento, não partilhamos dados com terceiros, e não construímos perfis de utilizadores. A tua navegação é privada.",
+                principle2Title: "🌍 Código Aberto e Transparente",
+                principle2Text: "Acreditamos na transparência. O nosso código é aberto, auditável, e desenvolvido com tecnologias que respeitam a liberdade do utilizador.",
+                principle3Title: "⚖️ Conformidade com RGPD",
+                principle3Text: "Cumprimos rigorosamente as leis de proteção de dados. Não pedimos consentimento porque não recolhemos dados desnecessários.",
+                principle4Title: "🌐 Acessibilidade Universal",
+                principle4Text: "A plataforma está disponível em 30 línguas europeias, garantindo que a informação cultural seja acessível a todos.",
+                principle5Title: "🛡️ Soberania e Autonomia",
+                principle5Text: "Defendemos o direito da sociedade civil a infraestruturas digitais que não dependam de empresas que monetizam dados pessoais.",
+                section4Title: "O Contexto Europeu",
+                section4P1: "A Europa está a liderar o debate sobre <strong>soberania digital</strong>. Organizações como a Internet Society (ISOC) questionam: \"O que significa soberania digital para a sociedade civil?\" Esta plataforma é uma resposta prática a essa questão.",
+                section4P2: "Enquanto as instituições europeias debatem regulamentação, nós construímos alternativas concretas. Inspirados pelo trabalho de organizações como a Free Software Foundation Europe (FSFE), a <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia, e noyb, demonstramos que é possível criar serviços digitais que respeitam os utilizadores.",
+                highlightText: "<strong>A nossa missão:</strong> Partilhar eventos locais sem vigilância nem exploração de dados pessoais.",
+                section5Title: "Entre Nós: Consulta-nos em Privado",
+                section5P1: "Ao utilizares a 100redes.eu, não estás apenas a descobrir eventos culturais. Estás a apoiar um modelo alternativo de internet — um modelo que coloca as pessoas antes dos lucros, a privacidade antes da vigilância, e a liberdade antes do controlo.",
+                section5P2: "<strong>Juntos, podemos construir uma internet mais justa, mais livre, e mais respeitadora dos direitos humanos.</strong>"
+            },
+            en: {
+                pageTitle: "About the Platform",
+                tagline: "Digital Sovereignty for Civil Society",
+                backLink: "← Back to Home",
+                backLinkFooter: "← Back to Home",
+                section1Title: "What is 100redes.eu?",
+                section1P1: "<strong>100redes.eu</strong> is an ethical cultural information platform that places digital rights at the center of the user experience. In a world where massive extraction of personal data has become the norm, we offer an alternative that respects your privacy and digital autonomy.",
+                section1P2: "We believe that access to public and cultural life should not require sacrificing your fundamental rights. That's why we built a platform that allows you to discover cultural events without tracking, without invasive cookies, and without selling your data to third parties.",
+                section2Title: "Why This Platform Matters?",
+                section2H3_1: "Digital Sovereignty",
+                section2P1: "<strong>Digital sovereignty</strong> means the right to control your own data and your online presence. Big Tech companies have built business models based on extracting and monetizing users' personal data. Every click, every search, every interaction is recorded, analyzed, and sold.",
+                section2P2: "This platform represents active resistance against this model. We defend that civil society must have access to digital infrastructures that do not compromise fundamental rights.",
+                section2H3_2: "Privacy as a Fundamental Right",
+                section2P3: "Privacy is not a luxury or an option — it is a <strong>fundamental human right</strong>. Organizations like noyb (None of Your Business) have demonstrated through hundreds of legal cases that tech companies systematically violate data protection laws like GDPR.",
+                section2P4: "With over <strong><a href='https://www.enforcementtracker.com/' target='_blank' rel='noopener noreferrer'>€2 billion in fines</a></strong> imposed on companies that violate user privacy, it's clear that the current model is unsustainable and harmful. 100redes.eu offers a concrete alternative.",
+                section2H3_3: "Free Access to Culture",
+                section2P5: "Culture is a common good. Access to information about cultural events should not be conditioned on accepting abusive terms or forced sharing of personal data. We defend that <strong>cultural information must be free and accessible</strong> without hidden costs to your privacy.",
+                section3Title: "Our Principles",
+                principle1Title: "🔒 Zero Tracking",
+                principle1Text: "We don't use tracking cookies, we don't share data with third parties, and we don't build user profiles. Your browsing is private.",
+                principle2Title: "🌍 Open Source and Transparent",
+                principle2Text: "We believe in transparency. Our code is open, auditable, and developed with technologies that respect user freedom.",
+                principle3Title: "⚖️ GDPR Compliant",
+                principle3Text: "We strictly comply with data protection laws. We don't ask for consent because we don't collect unnecessary data.",
+                principle4Title: "🌐 Universal Accessibility",
+                principle4Text: "The platform is available in 30 European languages, ensuring cultural information is accessible to everyone.",
+                principle5Title: "🛡️ Sovereignty and Autonomy",
+                principle5Text: "We defend civil society's right to digital infrastructures that don't depend on companies that monetize personal data.",
+                section4Title: "The European Context",
+                section4P1: "Europe is leading the debate on <strong>digital sovereignty</strong>. Organizations like the Internet Society (ISOC) ask: \"What does digital sovereignty mean for civil society?\" This platform is a practical answer to that question.",
+                section4P2: "While European institutions debate regulation, we build concrete alternatives. Inspired by the work of organizations like the Free Software Foundation Europe (FSFE), the <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia, and noyb, we demonstrate that it's possible to create digital services that respect users.",
+                highlightText: "<strong>Our mission:</strong> Share local events without surveillance or personal data exploitation.",
+                section5Title: "Between Us: Browse Privately",
+                section5P1: "By using 100redes.eu, you're not just discovering cultural events. You're supporting an alternative internet model — one that puts people before profits, privacy before surveillance, and freedom before control.",
+                section5P2: "<strong>Together, we can build a fairer, freer, and more human rights-respecting internet.</strong>"
+            },
+            fr: {
+                pageTitle: "À Propos de la Plateforme",
+                tagline: "Souveraineté Numérique pour la Société Civile",
+                backLink: "← Retour à l'Accueil",
+                backLinkFooter: "← Retour à l'Accueil",
+                section1Title: "Qu'est-ce que 100redes.eu ?",
+                section1P1: "<strong>100redes.eu</strong> est une plateforme éthique d'information culturelle qui place les droits numériques au centre de l'expérience utilisateur. Dans un monde où l'extraction massive de données personnelles est devenue la norme, nous offrons une alternative qui respecte votre vie privée et votre autonomie numérique.",
+                section1P2: "Nous croyons que l'accès à la vie publique et culturelle ne devrait pas exiger le sacrifice de vos droits fondamentaux. C'est pourquoi nous avons construit une plateforme qui vous permet de découvrir des événements culturels sans traçage, sans cookies invasifs et sans vente de vos données à des tiers.",
+                section2Title: "Pourquoi Cette Plateforme est Importante ?",
+                section2H3_1: "Souveraineté Numérique",
+                section2P1: "La <strong>souveraineté numérique</strong> signifie le droit de contrôler vos propres données et votre présence en ligne. Les grandes entreprises technologiques (Big Tech) ont construit des modèles économiques basés sur l'extraction et la monétisation des données personnelles des utilisateurs. Chaque clic, chaque recherche, chaque interaction est enregistré, analysé et vendu.",
+                section2P2: "Cette plateforme représente une résistance active contre ce modèle. Nous défendons que la société civile doit avoir accès à des infrastructures numériques qui ne compromettent pas les droits fondamentaux.",
+                section2H3_2: "La Vie Privée comme Droit Fondamental",
+                section2P3: "La vie privée n'est pas un luxe ou une option — c'est un <strong>droit humain fondamental</strong>. Des organisations comme noyb (None of Your Business) ont démontré à travers des centaines de cas juridiques que les entreprises technologiques violent systématiquement les lois de protection des données comme le RGPD.",
+                section2P4: "Avec plus de <strong><a href='https://www.enforcementtracker.com/' target='_blank' rel='noopener noreferrer'>2 milliards d'euros d'amendes</a></strong> imposées aux entreprises qui violent la vie privée des utilisateurs, il est clair que le modèle actuel est insoutenable et nuisible. 100redes.eu offre une alternative concrète.",
+                section2H3_3: "Accès Libre à la Culture",
+                section2P5: "La culture est un bien commun. L'accès à l'information sur les événements culturels ne devrait pas être conditionné à l'acceptation de conditions abusives ou au partage forcé de données personnelles. Nous défendons que <strong>l'information culturelle doit être libre et accessible</strong> sans coûts cachés pour votre vie privée.",
+                section3Title: "Nos Principes",
+                principle1Title: "🔒 Zéro Traçage",
+                principle1Text: "Nous n'utilisons pas de cookies de traçage, nous ne partageons pas de données avec des tiers et nous ne construisons pas de profils d'utilisateurs. Votre navigation est privée.",
+                principle2Title: "🌍 Open Source et Transparent",
+                principle2Text: "Nous croyons en la transparence. Notre code est ouvert, auditable et développé avec des technologies qui respectent la liberté de l'utilisateur.",
+                principle3Title: "⚖️ Conformité RGPD",
+                principle3Text: "Nous respectons strictement les lois de protection des données. Nous ne demandons pas de consentement car nous ne collectons pas de données inutiles.",
+                principle4Title: "🌐 Accessibilité Universelle",
+                principle4Text: "La plateforme est disponible en 30 langues européennes, garantissant que l'information culturelle soit accessible à tous.",
+                principle5Title: "🛡️ Souveraineté et Autonomie",
+                principle5Text: "Nous défendons le droit de la société civile à des infrastructures numériques qui ne dépendent pas d'entreprises qui monétisent les données personnelles.",
+                section4Title: "Le Contexte Européen",
+                section4P1: "L'Europe mène le débat sur la <strong>souveraineté numérique</strong>. Des organisations comme l'Internet Society (ISOC) posent la question : \"Que signifie la souveraineté numérique pour la société civile ?\" Cette plateforme est une réponse pratique à cette question.",
+                section4P2: "Alors que les institutions européennes débattent de la réglementation, nous construisons des alternatives concrètes. Inspirés par le travail d'organisations comme la Free Software Foundation Europe (FSFE), la <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia et noyb, nous démontrons qu'il est possible de créer des services numériques qui respectent les utilisateurs.",
+                highlightText: "<strong>Notre mission :</strong> Partager des événements locaux sans surveillance ni exploitation de données personnelles.",
+                section5Title: "Entre Nous : Consultez en Privé",
+                section5P1: "En utilisant 100redes.eu, vous ne découvrez pas seulement des événements culturels. Vous soutenez un modèle internet alternatif — un modèle qui place les personnes avant les profits, la vie privée avant la surveillance et la liberté avant le contrôle.",
+                section5P2: "<strong>Ensemble, nous pouvons construire un internet plus juste, plus libre et plus respectueux des droits humains.</strong>"
+            },
+            es: {
+                pageTitle: "Sobre la Plataforma",
+                tagline: "Soberanía Digital para la Sociedad Civil",
+                backLink: "← Volver al Inicio",
+                backLinkFooter: "← Volver al Inicio",
+                section1Title: "¿Qué es 100redes.eu?",
+                section1P1: "<strong>100redes.eu</strong> es una plataforma ética de información cultural que coloca los derechos digitales en el centro de la experiencia del usuario. En un mundo donde la extracción masiva de datos personales se ha convertido en la norma, ofrecemos una alternativa que respeta tu privacidad y autonomía digital.",
+                section1P2: "Creemos que el acceso a la vida pública y cultural no debe requerir el sacrificio de tus derechos fundamentales. Por eso construimos una plataforma que te permite descubrir eventos culturales sin rastreo, sin cookies invasivas y sin venta de tus datos a terceros.",
+                section2Title: "¿Por Qué Esta Plataforma es Importante?",
+                section2H3_1: "Soberanía Digital",
+                section2P1: "La <strong>soberanía digital</strong> significa el derecho a controlar tus propios datos y tu presencia en línea. Las grandes empresas tecnológicas (Big Tech) han construido modelos de negocio basados en la extracción y monetización de los datos personales de los usuarios. Cada clic, cada búsqueda, cada interacción se registra, analiza y vende.",
+                section2P2: "Esta plataforma representa una resistencia activa contra este modelo. Defendemos que la sociedad civil debe tener acceso a infraestructuras digitales que no comprometan los derechos fundamentales.",
+                section2H3_2: "Privacidad como Derecho Fundamental",
+                section2P3: "La privacidad no es un lujo o una opción — es un <strong>derecho humano fundamental</strong>. Organizaciones como noyb (None of Your Business) han demostrado a través de cientos de casos legales que las empresas tecnológicas violan sistemáticamente las leyes de protección de datos como el RGPD.",
+                section2P4: "Con más de <strong><a href='https://www.enforcementtracker.com/' target='_blank' rel='noopener noreferrer'>€2 mil millones en multas</a></strong> impuestas a empresas que violan la privacidad de los usuarios, está claro que el modelo actual es insostenible y perjudicial. 100redes.eu ofrece una alternativa concreta.",
+                section2H3_3: "Acceso Libre a la Cultura",
+                section2P5: "La cultura es un bien común. El acceso a la información sobre eventos culturales no debe estar condicionado a la aceptación de términos abusivos o al intercambio forzado de datos personales. Defendemos que la <strong>información cultural debe ser libre y accesible</strong> sin costos ocultos para tu privacidad.",
+                section3Title: "Nuestros Principios",
+                principle1Title: "🔒 Cero Rastreo",
+                principle1Text: "No utilizamos cookies de rastreo, no compartimos datos con terceros y no construimos perfiles de usuarios. Tu navegación es privada.",
+                principle2Title: "🌍 Código Abierto y Transparente",
+                principle2Text: "Creemos en la transparencia. Nuestro código es abierto, auditable y desarrollado con tecnologías que respetan la libertad del usuario.",
+                principle3Title: "⚖️ Cumplimiento del RGPD",
+                principle3Text: "Cumplimos estrictamente con las leyes de protección de datos. No pedimos consentimiento porque no recopilamos datos innecesarios.",
+                principle4Title: "🌐 Accesibilidad Universal",
+                principle4Text: "La plataforma está disponible en 30 idiomas europeos, garantizando que la información cultural sea accesible para todos.",
+                principle5Title: "🛡️ Soberanía y Autonomía",
+                principle5Text: "Defendemos el derecho de la sociedad civil a infraestructuras digitales que no dependan de empresas que monetizan datos personales.",
+                section4Title: "El Contexto Europeo",
+                section4P1: "Europa está liderando el debate sobre <strong>soberanía digital</strong>. Organizaciones como la Internet Society (ISOC) preguntan: \"¿Qué significa la soberanía digital para la sociedad civil?\" Esta plataforma es una respuesta práctica a esa pregunta.",
+                section4P2: "Mientras las instituciones europeas debaten sobre regulación, nosotros construimos alternativas concretas. Inspirados por el trabajo de organizaciones como la Free Software Foundation Europe (FSFE), la <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia y noyb, demostramos que es posible crear servicios digitales que respeten a los usuarios.",
+                highlightText: "<strong>Nuestra misión:</strong> Compartir eventos locales sin vigilancia ni explotación de datos personales.",
+                section5Title: "Entre Nosotros: Consulta en Privado",
+                section5P1: "Al usar 100redes.eu, no solo estás descubriendo eventos culturales. Estás apoyando un modelo alternativo de internet — uno que pone a las personas antes que las ganancias, la privacidad antes que la vigilancia y la libertad antes que el control.",
+                section5P2: "<strong>Juntos, podemos construir una internet más justa, más libre y más respetuosa con los derechos humanos.</strong>"
+            },
+            de: {
+                pageTitle: "Über die Plattform",
+                tagline: "Digitale Souveränität für die Zivilgesellschaft",
+                backLink: "← Zurück zur Startseite",
+                backLinkFooter: "← Zurück zur Startseite",
+                section1Title: "Was ist 100redes.eu?",
+                section1P1: "<strong>100redes.eu</strong> ist eine ethische Plattform für Kulturinformationen, die digitale Rechte in den Mittelpunkt der Benutzererfahrung stellt. In einer Welt, in der die massive Extraktion persönlicher Daten zur Norm geworden ist, bieten wir eine Alternative, die Ihre Privatsphäre und digitale Autonomie respektiert.",
+                section1P2: "Wir glauben, dass der Zugang zum öffentlichen und kulturellen Leben nicht das Opfer Ihrer Grundrechte erfordern sollte. Deshalb haben wir eine Plattform gebaut, die es Ihnen ermöglicht, kulturelle Veranstaltungen ohne Tracking, ohne invasive Cookies und ohne Verkauf Ihrer Daten an Dritte zu entdecken.",
+                section2Title: "Warum Diese Plattform Wichtig Ist?",
+                section2H3_1: "Digitale Souveränität",
+                section2P1: "<strong>Digitale Souveränität</strong> bedeutet das Recht, Ihre eigenen Daten und Ihre Online-Präsenz zu kontrollieren. Big-Tech-Unternehmen haben Geschäftsmodelle aufgebaut, die auf der Extraktion und Monetarisierung persönlicher Daten der Nutzer basieren. Jeder Klick, jede Suche, jede Interaktion wird aufgezeichnet, analysiert und verkauft.",
+                section2P2: "Diese Plattform stellt einen aktiven Widerstand gegen dieses Modell dar. Wir verteidigen, dass die Zivilgesellschaft Zugang zu digitalen Infrastrukturen haben muss, die Grundrechte nicht gefährden.",
+                section2H3_2: "Privatsphäre als Grundrecht",
+                section2P3: "Privatsphäre ist kein Luxus oder eine Option — sie ist ein <strong>grundlegendes Menschenrecht</strong>. Organisationen wie noyb (None of Your Business) haben durch Hunderte von Rechtsfällen nachgewiesen, dass Tech-Unternehmen systematisch Datenschutzgesetze wie die DSGVO verletzen.",
+                section2P4: "Mit über <strong><a href='https://www.enforcementtracker.com/' target='_blank' rel='noopener noreferrer'>2 Milliarden Euro an Bußgeldern</a></strong>, die gegen Unternehmen verhängt wurden, die die Privatsphäre der Nutzer verletzen, ist klar, dass das aktuelle Modell nicht nachhaltig und schädlich ist. 100redes.eu bietet eine konkrete Alternative.",
+                section2H3_3: "Freier Zugang zur Kultur",
+                section2P5: "Kultur ist ein Gemeingut. Der Zugang zu Informationen über kulturelle Veranstaltungen sollte nicht an die Akzeptanz missbräuchlicher Bedingungen oder den erzwungenen Austausch persönlicher Daten geknüpft sein. Wir verteidigen, dass <strong>Kulturinformationen frei und zugänglich</strong> sein müssen, ohne versteckte Kosten für Ihre Privatsphäre.",
+                section3Title: "Unsere Prinzipien",
+                principle1Title: "🔒 Null Tracking",
+                principle1Text: "Wir verwenden keine Tracking-Cookies, teilen keine Daten mit Dritten und erstellen keine Benutzerprofile. Ihr Surfen ist privat.",
+                principle2Title: "🌍 Open Source und Transparent",
+                principle2Text: "Wir glauben an Transparenz. Unser Code ist offen, überprüfbar und mit Technologien entwickelt, die die Freiheit der Benutzer respektieren.",
+                principle3Title: "⚖️ DSGVO-Konform",
+                principle3Text: "Wir halten uns strikt an Datenschutzgesetze. Wir fragen nicht nach Einwilligung, weil wir keine unnötigen Daten sammeln.",
+                principle4Title: "🌐 Universelle Zugänglichkeit",
+                principle4Text: "Die Plattform ist in 30 europäischen Sprachen verfügbar und stellt sicher, dass Kulturinformationen für alle zugänglich sind.",
+                principle5Title: "🛡️ Souveränität und Autonomie",
+                principle5Text: "Wir verteidigen das Recht der Zivilgesellschaft auf digitale Infrastrukturen, die nicht von Unternehmen abhängen, die persönliche Daten monetarisieren.",
+                section4Title: "Der Europäische Kontext",
+                section4P1: "Europa führt die Debatte über <strong>digitale Souveränität</strong> an. Organisationen wie die Internet Society (ISOC) fragen: \"Was bedeutet digitale Souveränität für die Zivilgesellschaft?\" Diese Plattform ist eine praktische Antwort auf diese Frage.",
+                section4P2: "Während europäische Institutionen über Regulierung debattieren, bauen wir konkrete Alternativen. Inspiriert von der Arbeit von Organisationen wie der Free Software Foundation Europe (FSFE), der <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia und noyb, zeigen wir, dass es möglich ist, digitale Dienste zu schaffen, die Benutzer respektieren.",
+                highlightText: "<strong>Unsere Mission:</strong> Lokale Veranstaltungen ohne Überwachung oder Ausbeutung persönlicher Daten teilen.",
+                section5Title: "Unter Uns: Privat Durchsuchen",
+                section5P1: "Durch die Nutzung von 100redes.eu entdecken Sie nicht nur kulturelle Veranstaltungen. Sie unterstützen ein alternatives Internetmodell — eines, das Menschen vor Profite, Privatsphäre vor Überwachung und Freiheit vor Kontrolle stellt.",
+                section5P2: "<strong>Gemeinsam können wir ein gerechteres, freieres und menschenrechtsfreundlicheres Internet aufbauen.</strong>"
+            },
+            it: {
+                pageTitle: "Informazioni sulla Piattaforma",
+                tagline: "Sovranità Digitale per la Società Civile",
+                backLink: "← Torna alla Home",
+                backLinkFooter: "← Torna alla Home",
+                section1Title: "Cos'è 100redes.eu?",
+                section1P1: "<strong>100redes.eu</strong> è una piattaforma etica di informazione culturale che pone i diritti digitali al centro dell'esperienza utente. In un mondo dove l'estrazione massiva di dati personali è diventata la norma, offriamo un'alternativa che rispetta la tua privacy e autonomia digitale.",
+                section1P2: "Crediamo che l'accesso alla vita pubblica e culturale non debba richiedere il sacrificio dei tuoi diritti fondamentali. Per questo abbiamo costruito una piattaforma che ti permette di scoprire eventi culturali senza tracciamento, senza cookie invasivi e senza vendita dei tuoi dati a terzi.",
+                section2Title: "Perché Questa Piattaforma è Importante?",
+                section2H3_1: "Sovranità Digitale",
+                section2P1: "La <strong>sovranità digitale</strong> significa il diritto di controllare i propri dati e la propria presenza online. Le grandi aziende tecnologiche (Big Tech) hanno costruito modelli di business basati sull'estrazione e monetizzazione dei dati personali degli utenti. Ogni clic, ogni ricerca, ogni interazione viene registrata, analizzata e venduta.",
+                section2P2: "Questa piattaforma rappresenta una resistenza attiva contro questo modello. Difendiamo che la società civile deve avere accesso a infrastrutture digitali che non compromettano i diritti fondamentali.",
+                section2H3_2: "Privacy come Diritto Fondamentale",
+                section2P3: "La privacy non è un lusso o un'opzione — è un <strong>diritto umano fondamentale</strong>. Organizzazioni come noyb (None of Your Business) hanno dimostrato attraverso centinaia di casi legali che le aziende tecnologiche violano sistematicamente le leggi sulla protezione dei dati come il GDPR.",
+                section2P4: "Con oltre <strong><a href='https://www.enforcementtracker.com/' target='_blank' rel='noopener noreferrer'>2 miliardi di euro in multe</a></strong> imposte alle aziende che violano la privacy degli utenti, è chiaro che il modello attuale è insostenibile e dannoso. 100redes.eu offre un'alternativa concreta.",
+                section2H3_3: "Accesso Libero alla Cultura",
+                section2P5: "La cultura è un bene comune. L'accesso alle informazioni sugli eventi culturali non dovrebbe essere condizionato all'accettazione di termini abusivi o alla condivisione forzata di dati personali. Difendiamo che <strong>l'informazione culturale deve essere libera e accessibile</strong> senza costi nascosti per la tua privacy.",
+                section3Title: "I Nostri Principi",
+                principle1Title: "🔒 Zero Tracciamento",
+                principle1Text: "Non utilizziamo cookie di tracciamento, non condividiamo dati con terzi e non costruiamo profili utente. La tua navigazione è privata.",
+                principle2Title: "🌍 Open Source e Trasparente",
+                principle2Text: "Crediamo nella trasparenza. Il nostro codice è aperto, verificabile e sviluppato con tecnologie che rispettano la libertà dell'utente.",
+                principle3Title: "⚖️ Conforme al GDPR",
+                principle3Text: "Rispettiamo rigorosamente le leggi sulla protezione dei dati. Non chiediamo il consenso perché non raccogliamo dati non necessari.",
+                principle4Title: "🌐 Accessibilità Universale",
+                principle4Text: "La piattaforma è disponibile in 30 lingue europee, garantendo che le informazioni culturali siano accessibili a tutti.",
+                principle5Title: "🛡️ Sovranità e Autonomia",
+                principle5Text: "Difendiamo il diritto della società civile a infrastrutture digitali che non dipendano da aziende che monetizzano i dati personali.",
+                section4Title: "Il Contesto Europeo",
+                section4P1: "L'Europa sta guidando il dibattito sulla <strong>sovranità digitale</strong>. Organizzazioni come l'Internet Society (ISOC) chiedono: \"Cosa significa sovranità digitale per la società civile?\" Questa piattaforma è una risposta pratica a questa domanda.",
+                section4P2: "Mentre le istituzioni europee dibattono sulla regolamentazione, noi costruiamo alternative concrete. Ispirati dal lavoro di organizzazioni come la Free Software Foundation Europe (FSFE), la <a href='https://freeit.world/' target='_blank' rel='noopener noreferrer'>Free IT Foundation</a>, Wikimedia e noyb, dimostriamo che è possibile creare servizi digitali che rispettano gli utenti.",
+                highlightText: "<strong>La nostra missione:</strong> Condividere eventi locali senza sorveglianza né sfruttamento di dati personali.",
+                section5Title: "Tra Noi: Consulta in Privato",
+                section5P1: "Utilizzando 100redes.eu, non stai solo scoprendo eventi culturali. Stai supportando un modello alternativo di internet — uno che mette le persone prima dei profitti, la privacy prima della sorveglianza e la libertà prima del controllo.",
+                section5P2: "<strong>Insieme, possiamo costruire un internet più giusto, più libero e più rispettoso dei diritti umani.</strong>"
+            }
+        };
+
+        function applyLanguage(langCode) {
+            const lang = translations[langCode] || translations['en'];
+            
+            // Apply translations
+            Object.keys(lang).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    // Pour les liens simples, utiliser textContent
+                    if (key === 'backLink' || key === 'backLinkFooter') {
+                        element.textContent = lang[key];
+                    } else {
+                        element.innerHTML = lang[key];
+                    }
+                }
+            });
+            
+            document.documentElement.lang = langCode;
+            
+            // Mettre à jour les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.dataset.lang === langCode) {
+                    btn.style.background = '#1465ff';
+                    btn.style.color = '#fff';
+                } else {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#1465ff';
+                }
+            });
+        }
+
+        function detectAndApplyLanguage() {
+            // Utiliser uniquement la langue du navigateur (pas de stockage persistant)
+            const browserLang = navigator.language || navigator.userLanguage;
+            const langCode = browserLang.split('-')[0].toLowerCase();
+            applyLanguage(langCode);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            detectAndApplyLanguage();
+            
+            // Ajouter les événements de clic sur les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyLanguage(btn.dataset.lang);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
