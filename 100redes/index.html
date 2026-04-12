@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100redes.eu</title>
+    
+    <!-- Open Graph pour aperçu WhatsApp/réseaux sociaux -->
+    <meta property="og:title" content="100redes.eu">
+    <meta property="og:description" content="Access to public life. Free cultural information, zero tracking.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://100redes.eu">
+    <meta property="og:site_name" content="100redes.eu">
+    
+    <!-- Favicon intégré -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58.862274 58.866558'%3E%3Cg transform='translate(-117.475,-56.356249)'%3E%3Cpath fill='%231465ff' d='m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z'/%3E%3Cpath fill='%23ffffff' d='m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z'/%3E%3Ccircle fill='%2318207d' cx='153.08864' cy='89.09008' r='1.7464216'/%3E%3Ccircle fill='%2318207d' cx='141.04666' cy='89.09008' r='1.7464216'/%3E%3C/g%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: auto;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100vh;
+            height: 100dvh;
+        }
+        
+        /* SECTIONS PLEINE PAGE */
+        .sections-wrapper {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .section {
+            min-height: 100vh;
+            min-height: 100dvh;
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            padding-bottom: 100px;
+            position: absolute;
+            width: 100%;
+            overflow-y: auto;
+            top: 0;
+            left: 0;
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 1s ease;
+        }
+        
+        .section.hidden-up {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        
+        .section.hidden-down {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        
+        .section.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .section-hero {
+            background: #fff;
+        }
+        
+        .section-grid {
+            background: #1465ff;
+            color: #fff;
+            padding: 2rem;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .section-grid::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .grid-header {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            z-index: 10;
+            position: relative;
+        }
+        
+        .grid-header h2 {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        /* Poisson section 2 - glisse depuis le haut */
+        .fish-header {
+            width: 120px;
+            height: 120px;
+            transform: translateY(-200px);
+            transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 15;
+            position: fixed;
+            top: 15px;
+            left: 50%;
+            margin-left: -60px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .fish-mini {
+            width: 120px;
+            height: 120px;
+            flex-shrink: 0;
+        }
+        
+        .fish-header.visible {
+            transform: translateY(0);
+        }
+        
+        .site-name {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+        
+        /* Animation petits tours du poisson section 2 - comme section 1 */
+        .fish-group-header {
+            transform-origin: center center;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+        }
+        
+        .fish-group-header.jump-right {
+            animation-name: fishJumpHeaderRight;
+        }
+        
+        .fish-group-header.jump-left {
+            animation-name: fishJumpHeaderLeft;
+        }
+        
+        /* Balade vers la droite - comme section 1 */
+        @keyframes fishJumpHeaderRight {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            19% { transform: translate(0, 0) rotate(0deg); }
+            21% { transform: translate(8px, 20px) rotate(-15deg); }
+            23% { transform: translate(-5px, 45px) rotate(10deg); }
+            25% { transform: translate(10px, 70px) rotate(-10deg); }
+            27% { transform: translate(30px, 88px) rotate(-50deg); }
+            29% { transform: translate(60px, 90px) rotate(-90deg); }
+            31% { transform: translate(90px, 70px) rotate(-130deg); }
+            33% { transform: translate(98px, 40px) rotate(-170deg); }
+            35% { transform: translate(88px, 5px) rotate(-185deg); }
+            37% { transform: translate(75px, -25px) rotate(-220deg); }
+            39% { transform: translate(55px, -50px) rotate(-270deg); }
+            41% { transform: translate(30px, -55px) rotate(-310deg); }
+            43% { transform: translate(10px, -40px) rotate(-345deg); }
+            45% { transform: translate(2px, -15px) rotate(-358deg); }
+            47% { transform: translate(0, 0) rotate(-360deg); }
+            100% { transform: translate(0, 0) rotate(-360deg); }
+        }
+        
+        /* Balade vers la gauche - comme section 1 */
+        @keyframes fishJumpHeaderLeft {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            19% { transform: translate(0, 0) rotate(0deg); }
+            21% { transform: translate(-8px, 20px) rotate(15deg); }
+            23% { transform: translate(5px, 45px) rotate(-10deg); }
+            25% { transform: translate(-10px, 70px) rotate(10deg); }
+            27% { transform: translate(-30px, 88px) rotate(50deg); }
+            29% { transform: translate(-60px, 90px) rotate(90deg); }
+            31% { transform: translate(-90px, 70px) rotate(130deg); }
+            33% { transform: translate(-98px, 40px) rotate(170deg); }
+            35% { transform: translate(-88px, 5px) rotate(185deg); }
+            37% { transform: translate(-75px, -25px) rotate(220deg); }
+            39% { transform: translate(-55px, -50px) rotate(270deg); }
+            41% { transform: translate(-30px, -55px) rotate(310deg); }
+            43% { transform: translate(-10px, -40px) rotate(345deg); }
+            45% { transform: translate(-2px, -15px) rotate(358deg); }
+            47% { transform: translate(0, 0) rotate(360deg); }
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        /* Animation yeux du poisson section 2 */
+        .fish-eye-header {
+            animation: eyeBlinkMini 4s infinite ease-in-out;
+        }
+        
+        .fish-eye-header-2 {
+            animation-delay: 0.15s;
+        }
+        
+        @keyframes eyeBlinkMini {
+            0%, 100% { fill: #18207d; }
+            48% { fill: #18207d; }
+            50% { fill: #ffffff; }
+            52% { fill: #18207d; }
+        }
+        
+        .section-grid .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 0.5rem;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-grid .events-grid::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .section-grid .event-card {
+            position: relative;
+            opacity: 1;
+            transform: scale(1);
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            padding: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 20;
+        }
+        
+        /* Bouton de navigation */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            bottom: max(30px, env(safe-area-inset-bottom, 0px) + 15px);
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            font-size: 2rem;
+            background: #1465ff;
+            color: #fff;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(20, 101, 255, 0.4), 0 0 0 4px rgba(255,255,255,0.8);
+            transition: box-shadow 0.3s;
+            z-index: 9999;
+            -webkit-transform: translateX(-50%);
+        }
+        
+        .scroll-indicator:hover {
+            box-shadow: 0 6px 30px rgba(20, 101, 255, 0.6);
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        /* Phrase mission avec animation */
+        .mission-phrase {
+            color: #1465ff;
+            font-size: 0.85rem;
+            font-weight: 500;
+            max-width: 500px;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            padding: 0 1rem;
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                opacity: 0.7;
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(20, 101, 255, 0.3);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.02);
+                text-shadow: 0 0 15px rgba(20, 101, 255, 0.5);
+            }
+        }
+        
+        .fish-container {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 120px;
+            height: 120px;
+            z-index: 100;
+            overflow: visible;
+        }
+        
+        .fish-logo {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+        }
+        
+        /* Animation des yeux du poisson - mouvement naturel */
+        .fish-eye {
+            animation: eyeLook 7s infinite ease-in-out;
+            transform-origin: center;
+        }
+        
+        .fish-eye-1 {
+            animation-delay: 0s;
+        }
+        
+        .fish-eye-2 {
+            animation-delay: 0.15s;
+        }
+        
+        /* Groupe poisson (corps + yeux) pour saut synchronisé */
+        /* Point de rotation = entre les deux yeux du poisson */
+        .fish-group {
+            animation: fishJumpRight 20s infinite ease-in-out;
+            transform-origin: 50% 56%;
+            transform-box: fill-box;
+        }
+        
+        /* L'eau reste statique - pas d'animation */
+        .water {
+            fill: #1465ff;
+        }
+        
+        /* Animation globale du conteneur */
+        .fish-container {
+            animation: containerFloat 5s infinite ease-in-out;
+        }
+        
+        /* Mouvement naturel des yeux - regarder autour */
+        @keyframes eyeLook {
+            0%, 100% { transform: translate(0, 0); fill: #18207d; }
+            /* Clignotement dès 2 secondes (10% de 20s) */
+            9% { fill: #18207d; }
+            10% { fill: #ffffff; }
+            12% { fill: #18207d; }
+            /* Mouvement des yeux */
+            20% { transform: translate(0.3px, 0); }
+            30% { transform: translate(0.5px, -0.2px); }
+            40% { transform: translate(0.3px, 0.1px); }
+            50% { transform: translate(0, 0); }
+            60% { transform: translate(-0.3px, 0); }
+            70% { transform: translate(-0.4px, 0.2px); }
+            80% { transform: translate(-0.2px, 0); }
+            90% { transform: translate(0, 0); }
+        }
+        
+        /* 
+         * ICÔNE POISSON - se balade avec rotation sur elle-même
+         * L'icône tourne sur son centre pendant qu'elle se déplace
+         */
+        
+        /* 
+         * Rotation = direction où le poisson NAGE (tête devant)
+         * 0deg = nage vers le bas (position initiale)
+         * -90deg = nage vers la droite
+         * 180deg = nage vers le haut
+         * 90deg = nage vers la gauche
+         */
+        
+        /* Balade vers la droite - commence à 3.8s (19%), tour de 4s (20%) */
+        @keyframes fishJumpRight {
+            /* Repos dans le logo */
+            0% { transform: translate(0, 0) rotate(0deg); }
+            19% { transform: translate(0, 0) rotate(0deg); }
+            /* Descend en zigzag */
+            21% { transform: translate(8px, 20px) rotate(-15deg); }
+            23% { transform: translate(-5px, 45px) rotate(10deg); }
+            25% { transform: translate(10px, 70px) rotate(-10deg); }
+            /* Tourne vers la droite */
+            27% { transform: translate(30px, 88px) rotate(-50deg); }
+            29% { transform: translate(60px, 90px) rotate(-90deg); }
+            /* Remonte */
+            31% { transform: translate(90px, 70px) rotate(-130deg); }
+            33% { transform: translate(98px, 40px) rotate(-170deg); }
+            35% { transform: translate(88px, 5px) rotate(-185deg); }
+            /* Continue vers le haut en zigzag */
+            37% { transform: translate(75px, -25px) rotate(-220deg); }
+            39% { transform: translate(55px, -50px) rotate(-270deg); }
+            /* Revient au logo */
+            41% { transform: translate(30px, -55px) rotate(-310deg); }
+            43% { transform: translate(10px, -40px) rotate(-345deg); }
+            45% { transform: translate(2px, -15px) rotate(-358deg); }
+            47% { transform: translate(0, 0) rotate(-360deg); }
+            /* Reste dans le logo */
+            100% { transform: translate(0, 0) rotate(-360deg); }
+        }
+        
+        /* Balade vers la gauche - commence à 3.8s (19%), tour de 4s (20%) */
+        @keyframes fishJumpLeft {
+            /* Repos dans le logo */
+            0% { transform: translate(0, 0) rotate(0deg); }
+            19% { transform: translate(0, 0) rotate(0deg); }
+            /* Descend en zigzag */
+            21% { transform: translate(-8px, 20px) rotate(15deg); }
+            23% { transform: translate(5px, 45px) rotate(-10deg); }
+            25% { transform: translate(-10px, 70px) rotate(10deg); }
+            /* Tourne vers la gauche */
+            27% { transform: translate(-30px, 88px) rotate(50deg); }
+            29% { transform: translate(-60px, 90px) rotate(90deg); }
+            /* Remonte */
+            31% { transform: translate(-90px, 70px) rotate(130deg); }
+            33% { transform: translate(-98px, 40px) rotate(170deg); }
+            35% { transform: translate(-88px, 5px) rotate(185deg); }
+            /* Continue vers le haut en zigzag */
+            37% { transform: translate(-75px, -25px) rotate(220deg); }
+            39% { transform: translate(-55px, -50px) rotate(270deg); }
+            /* Revient au logo */
+            41% { transform: translate(-30px, -55px) rotate(310deg); }
+            43% { transform: translate(-10px, -40px) rotate(345deg); }
+            45% { transform: translate(-2px, -15px) rotate(358deg); }
+            47% { transform: translate(0, 0) rotate(360deg); }
+            /* Reste dans le logo */
+            100% { transform: translate(0, 0) rotate(360deg); }
+        }
+        
+        .fish-group.jump-right {
+            animation-name: fishJumpRight;
+        }
+        
+        .fish-group.jump-left {
+            animation-name: fishJumpLeft;
+        }
+        
+        @keyframes waterWave {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                fill: #1465ff;
+            }
+            25% { 
+                transform: scale(1.03) rotate(1deg);
+                fill: #1557ff;
+            }
+            50% { 
+                transform: scale(1.02) rotate(-0.5deg);
+                fill: #1465ff;
+            }
+            75% { 
+                transform: scale(1.04) rotate(0.8deg);
+                fill: #1448ff;
+            }
+        }
+        
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+        
+        /* Les yeux restent visibles quand le poisson saute */
+        .fish-eye {
+            z-index: 10;
+            position: relative;
+        }
+        
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            letter-spacing: 1px;
+        }
+        
+        .section-about a {
+            color: #fff;
+        }
+        
+        /* VIGNETTES ÉVÉNEMENTS - Transition fade */
+        .events-section {
+            width: 100%;
+            max-width: 400px;
+            margin: 3rem 0;
+            padding: 2rem 0;
+            perspective: 1000px;
+        }
+        
+        .events-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            color: #1465ff;
+            text-transform: uppercase;
+        }
+        
+        .events-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .event-card {
+            position: absolute;
+            width: 280px;
+            background: transparent;
+            border: none;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+        
+        .event-card.active {
+            opacity: 1;
+        }
+        
+        .event-card.fade-out {
+            opacity: 0;
+        }
+        
+        
+        .event-emoji {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .event-date {
+            font-size: 0.75rem;
+            color: #e63946;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .event-artistas {
+            font-size: 0.7rem;
+            color: #555;
+            margin-top: 0.4rem;
+            font-style: italic;
+            line-height: 1.3;
+        }
+        
+        /* BOUTON VER MAIS */
+        .ver-mais-btn {
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: #1465ff;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .ver-mais-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .ver-mais-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(20, 101, 255, 0.4);
+        }
+        
+        .ver-mais-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .ver-mais-btn span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Animation pulse sur le bouton */
+        @keyframes btnPulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(20, 101, 255, 0.3); }
+            50% { box-shadow: 0 5px 30px rgba(20, 101, 255, 0.5); }
+        }
+        
+        .ver-mais-btn {
+            animation: btnPulse 2s infinite ease-in-out;
+        }
+        
+        /* NOUVELLES SECTIONS HERO - Structure claire */
+        .section-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            gap: 0;
+        }
+        
+        .hero-logo-section {
+            flex: 0 0 auto;
+            padding-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-title-section {
+            flex: 0 0 auto;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-mission-section {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 600px;
+            padding: 1rem;
+        }
+        
+        .hero-cta-section {
+            flex: 0 0 auto;
+            margin: 1.5rem 0;
+        }
+        
+        .hero-footer-section {
+            flex: 0 0 auto;
+            padding-bottom: 1rem;
+        }
+        
+        .cta-button {
+            color: #fff;
+            background: #1465ff;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 0.75rem 2rem;
+            border: 2px solid #1465ff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .cta-button:hover {
+            background: #0d4fcc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(20, 101, 255, 0.3);
+        }
+        
+        .hero-footer {
+            max-width: 800px;
+            line-height: 1.6;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        
+        
+        .event-name {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        
+        .event-location {
+            font-size: 0.8rem;
+            color: #1465ff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .event-type {
+            font-size: 0.75rem;
+            color: #1465ff;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Tablette */
+        @media (max-width: 1024px) {
+            .hero-mission-section {
+                max-width: 500px;
+            }
+            
+            .mission-phrase {
+                font-size: 0.8rem;
+            }
+            
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .section-hero {
+                padding: 1.5rem 1rem;
+            }
+            
+            .fish-container {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-logo-section {
+                padding-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .site-name-hero {
+                font-size: 1.2rem !important;
+            }
+            
+            .main-title {
+                font-size: 1.5rem;
+                line-height: 1.2;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .hero-mission-section {
+                padding: 0.5rem;
+                max-width: 100%;
+            }
+            
+            .mission-phrase {
+                font-size: 0.75rem;
+                line-height: 1.4;
+                max-width: 100%;
+            }
+            
+            .hero-cta-section {
+                margin: 1rem 0;
+            }
+            
+            .cta-button {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.5rem;
+            }
+            
+            .hero-footer {
+                font-size: 0.6rem;
+                line-height: 1.4;
+            }
+            
+            .section {
+                padding-bottom: 90px;
+            }
+        }
+        
+        /* Petit mobile */
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 1.3rem;
+            }
+            
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .mission-phrase {
+                font-size: 0.7rem;
+            }
+            
+            .cta-button {
+                font-size: 0.85rem;
+                padding: 0.5rem 1.2rem;
+            }
+        }
+            
+            /* BOUTON VER MAIS */
+            .ver-mais-btn {
+                margin-top: 1.5rem;
+                padding: 0.8rem 2rem;
+                background: #1465ff;
+                color: #fff;
+                border: none;
+                border-radius: 30px;
+                font-family: 'Courier New', monospace;
+                font-size: 0.9rem;
+                font-weight: bold;
+                letter-spacing: 1px;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+            
+            .ver-mais-btn::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: width 0.6s, height 0.6s;
+            }
+            
+            .ver-mais-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(20, 101, 255, 0.4);
+            }
+            
+            .ver-mais-btn:hover::before {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .ver-mais-btn span {
+                position: relative;
+                z-index: 1;
+            }
+            
+            /* Animation pulse sur le bouton */
+            @keyframes btnPulse {
+                0%, 100% { box-shadow: 0 5px 20px rgba(20, 101, 255, 0.3); }
+                50% { box-shadow: 0 5px 30px rgba(20, 101, 255, 0.5); }
+            }
+            
+            .ver-mais-btn {
+                animation: btnPulse 2s infinite ease-in-out;
+            }
+            
+            /* NOUVELLES SECTIONS HERO - Structure claire */
+            .section-hero {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 100vh;
+                padding: 2rem 1rem;
+                gap: 0;
+            }
+            
+            .hero-logo-section {
+                flex: 0 0 auto;
+                padding-top: 1rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero-title-section {
+                flex: 0 0 auto;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            
+            .hero-mission-section {
+                flex: 1 1 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                max-width: 600px;
+                padding: 1rem;
+            }
+            
+            .hero-cta-section {
+                flex: 0 0 auto;
+                margin: 1.5rem 0;
+            }
+            
+            .hero-footer-section {
+                flex: 0 0 auto;
+                padding-bottom: 1rem;
+            }
+            
+            .cta-button {
+                color: #fff;
+                background: #1465ff;
+                text-decoration: none;
+                font-size: 1rem;
+                padding: 0.75rem 2rem;
+                border: 2px solid #1465ff;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+                display: inline-block;
+                font-weight: bold;
+            }
+            
+            .cta-button:hover {
+                background: #0d4fcc;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(20, 101, 255, 0.3);
+            }
+            
+            .hero-footer {
+                max-width: 800px;
+                line-height: 1.6;
+                font-size: 0.7rem;
+                opacity: 0.5;
+                padding: 0 1rem;
+                text-align: center;
+            }
+            
+            
+            .event-name {
+                font-size: 1rem;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+                color: #1a1a2e;
+                line-height: 1.3;
+            }
+            
+            .event-location {
+                font-size: 0.8rem;
+                color: #1465ff;
+            
+            .events-container {
+                height: 200px;
+            }
+            
+            .fish-container {
+                margin-bottom: 1rem;
+                width: 100px;
+                height: 100px;
+            }
+            
+            .site-name-hero {
+                font-size: 1.2rem !important;
+            }
+            
+            /* Vignettes section 1 mobile - centrées et plus larges */
+            .events-section {
+                width: 100%;
+                max-width: 100%;
+                padding: 0 0.5rem;
+                box-sizing: border-box;
+            }
+            
+            .events-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .event-card {
+                width: 90% !important;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            
+            /* Grille événements mobile - 2 colonnes */
+            .section-grid .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                max-height: 70vh;
+                padding: 0.3rem;
+                padding-top: 160px;
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .section-grid {
+                padding-top: 0;
+            }
+            
+            .section-grid .event-card {
+                padding: 0.6rem;
+                border-radius: 12px;
+            }
+            
+            .section-grid .event-card .event-emoji {
+                font-size: 1.5rem;
+            }
+            
+            .section-grid .event-card .event-name {
+                font-size: 0.7rem;
+            }
+            
+            .section-grid .event-card .event-location,
+            .section-grid .event-card .event-date {
+                font-size: 0.65rem;
+            }
+            
+            .section-grid .event-card .event-type {
+                font-size: 0.6rem;
+            }
+            
+            .grid-header {
+                margin-bottom: 0.5rem;
+            }
+            
+            .fish-header {
+                width: 120px;
+                height: auto;
+                margin-left: -60px;
+                top: 5px;
+            }
+            
+            .fish-mini {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .fish-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- SECTION 1: HERO -->
+    <section class="section section-hero">
+    
+    <div class="fish-container">
+        <!-- Logo SVG animé -->
+        <svg class="fish-logo" viewBox="0 0 58.862274 58.866558" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(-117.475,-56.356249)">
+                <!-- Masque circulaire pour clipper le poisson -->
+                <defs>
+                    <clipPath id="waterClip">
+                        <circle cx="146.906" cy="85.789" r="29.4" />
+                    </clipPath>
+                </defs>
+                
+                <!-- Eau (statique) -->
+                <path class="water"
+                   style="fill:#1465ff;fill-opacity:1;stroke:none;stroke-width:6.16199;stroke-linejoin:round;stroke-miterlimit:3.3;stroke-dashoffset:0.32"
+                   d="m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z"
+                   sodipodi:nodetypes="ccccccccc" />
+                
+                <!-- Groupe poisson (corps + yeux) - peut sortir de l'eau -->
+                <g class="fish-group">
+                <!-- Corps du poisson -->
+                <path class="fish-body"
+                   style="fill:#ffffff;stroke:none;stroke-width:6.16201;stroke-linejoin:round;stroke-miterlimit:3.3;stroke-dashoffset:0.32"
+                   d="m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z m 5.63871,24.092116 c 0.005,2.64e-4 0.0159,-0.0046 0,0 z m 0.97014,0 c 0.008,2.64e-4 -0.0224,-0.0042 0,0 z m -1.04095,0.01535 c 0.005,-1.67e-4 0.0189,-0.0058 0,0 z m 1.10915,-7.94e-4 c 0.0138,0.0029 -0.0178,-0.005 0,0 z m -1.17376,0.01958 c 0.005,-5.29e-4 0.0238,-0.0091 0,0 z m 1.23608,-0.0016 c 0.0202,0.0062 -0.018,-0.0066 0,0 z m -1.35159,0.05254 c 0.004,-7.94e-4 0.0214,-0.01225 0,0 z m 1.46678,-0.0029 c 0.0204,0.01024 -0.0134,-0.0076 0,0 z m -2.08254,0.62946 c 0.003,-0.0029 0.008,-0.01357 0,0 z m -0.26464,1.024953 c 5.3e-4,-0.0037 -0.002,-0.01455 0,0 z m 3.23117,0.130853 c -0.002,0.01103 0.003,-0.01344 0,0 z m -2.86276,0.746609 c -7.9e-4,-0.0028 -0.0113,-0.01204 0,0 z m 1.54967,0.603356 c -0.0123,0.0029 0.01,-0.0016 0,0 z m -0.19677,0.02577 c 0.0134,1.9e-5 0.003,-7.94e-4 0,0 z" />
+                
+                <!-- Yeux du poisson -->
+                <circle class="fish-eye fish-eye-1"
+                   style="fill:#18207d;fill-opacity:1;stroke-width:6.16199;stroke-linejoin:round;stroke-miterlimit:3.3;stroke-dashoffset:0.32"
+                   cx="153.08864"
+                   cy="89.09008"
+                   r="1.7464216" />
+                
+                <circle class="fish-eye fish-eye-2"
+                   style="fill:#18207d;fill-opacity:1;stroke-width:6.16199;stroke-linejoin:round;stroke-miterlimit:3.3;stroke-dashoffset:0.32"
+                   cx="141.04666"
+                   cy="89.09008"
+                   r="1.7464216" />
+                </g>
+            </g>
+        </svg>
+    </div>
+    
+    <!-- Section Logo et Nom -->
+    <div class="hero-logo-section">
+        <div class="site-name-hero" style="color: #1465ff; font-size: 1.5rem; font-weight: bold; letter-spacing: 2px;">
+            100redes.eu
+        </div>
+    </div>
+    
+    <!-- Section Titre Principal -->
+    <div class="hero-title-section">
+        <div class="main-title">
+            ACESSO À VIDA PÚBLICA
+        </div>
+        
+        <div class="subtitle">
+            INTEGRIDADE NUMÉRICA GARANTIDA.
+        </div>
+    </div>
+    
+    <!-- Section Mission -->
+    <div class="hero-mission-section">
+        <div class="mission-phrase" id="missionPhrase">
+            Estamos a construir ativamente uma plataforma ética e responsável que te permite descobrir eventos culturais sem comprometer os teus direitos digitais.
+        </div>
+    </div>
+    
+    <!-- Section Bouton -->
+    <div class="hero-cta-section">
+        <a href="about.html" id="aboutLink" class="cta-button">Saber Mais →</a>
+    </div>
+    
+    <!-- Section Footer -->
+    <div class="hero-footer-section">
+        <div class="hero-footer" id="heroFooter">
+            INFORMAÇÃO CULTURAL LIVRE, ZERO RASTREIO: COMBATEMOS A EXTRAÇÃO DE DADOS DA BIG TECH PARA QUE VIVAS A TUA COMUNIDADE COM TOTAL SOBERANIA E ANONIMATO.
+        </div>
+        
+        <!-- Sélecteur de langue -->
+        <div class="language-selector" style="margin-top: 1rem; display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+            <button class="lang-btn" data-lang="pt" style="padding: 0.3rem 0.6rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.7rem; transition: all 0.3s;">PT</button>
+            <button class="lang-btn" data-lang="fr" style="padding: 0.3rem 0.6rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.7rem; transition: all 0.3s;">FR</button>
+            <button class="lang-btn" data-lang="en" style="padding: 0.3rem 0.6rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.7rem; transition: all 0.3s;">EN</button>
+            <button class="lang-btn" data-lang="es" style="padding: 0.3rem 0.6rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.7rem; transition: all 0.3s;">ES</button>
+            <button class="lang-btn" data-lang="de" style="padding: 0.3rem 0.6rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.7rem; transition: all 0.3s;">DE</button>
+            <button class="lang-btn" data-lang="it" style="padding: 0.3rem 0.6rem; background: transparent; border: 1px solid #1465ff; color: #1465ff; border-radius: 3px; cursor: pointer; font-family: 'Courier New', monospace; font-size: 0.7rem; transition: all 0.3s;">IT</button>
+        </div>
+        
+        <!-- Copyright et liens légaux -->
+        <p style="margin-top: 1.5rem; color: #666; font-size: 0.7rem;">
+            © 2026 100redes.eu | 
+            <a href="LICENSE" style="color: #1465ff; text-decoration: none;">Licence MIT</a> | 
+            <a href="about.html" style="color: #1465ff; text-decoration: none;">À Propos</a> | 
+            <a href="legal.html" style="color: #1465ff; text-decoration: none;">Mentions Légales</a> | 
+            <a href="https://github.com/votre-repo" target="_blank" rel="noopener noreferrer" style="color: #1465ff; text-decoration: none;">Code Source</a>
+        </p>
+    </div>
+    
+    </section>
+    
+    
+    <script>
+        // SYSTÈME DE TRADUCTION MULTILINGUE EUROPÉEN
+        const translations = {
+            // Portugais (défaut)
+            pt: {
+                mainTitle: 'ACESSO À VIDA PÚBLICA',
+                subtitle: 'INTEGRIDADE NUMÉRICA GARANTIDA.',
+                footer: 'INFORMAÇÃO CULTURAL LIVRE, ZERO RASTREIO: COMBATEMOS A EXTRAÇÃO DE DADOS DA BIG TECH PARA QUE VIVAS A TUA COMUNIDADE COM TOTAL SOBERANIA E ANONIMATO.',
+                section2Title: 'Informação Cultural sem redes',
+                missionPhrase: 'Estamos a construir ativamente uma plataforma ética e responsável que te permite descobrir eventos culturais sem comprometer os teus direitos digitais.',
+                aboutLink: 'Saber Mais →'
+            },
+            // Français
+            fr: {
+                mainTitle: 'ACCÈS À LA VIE PUBLIQUE',
+                subtitle: 'INTÉGRITÉ NUMÉRIQUE GARANTIE.',
+                footer: 'INFORMATION CULTURELLE LIBRE, ZÉRO TRAÇAGE : NOUS COMBATTONS L\'EXTRACTION DE DONNÉES DES BIG TECH POUR QUE TU VIVES TA COMMUNAUTÉ EN TOUTE SOUVERAINETÉ ET ANONYMAT.',
+                section2Title: 'Information Culturelle sans réseaux',
+                missionPhrase: 'Nous construisons activement une plateforme éthique et responsable qui te permet de découvrir des événements culturels sans compromettre tes droits numériques.',
+                aboutLink: 'En Savoir Plus →'
+            },
+            // Anglais
+            en: {
+                mainTitle: 'ACCESS TO PUBLIC LIFE',
+                subtitle: 'DIGITAL INTEGRITY GUARANTEED.',
+                footer: 'FREE CULTURAL INFORMATION, ZERO TRACKING: WE FIGHT BIG TECH DATA EXTRACTION SO YOU CAN LIVE YOUR COMMUNITY WITH FULL SOVEREIGNTY AND ANONYMITY.',
+                section2Title: 'Cultural Information without networks',
+                missionPhrase: 'We are actively building an ethical and responsible platform that lets you discover cultural events without compromising your digital rights.',
+                aboutLink: 'Learn More →'
+            },
+            // Espagnol
+            es: {
+                mainTitle: 'ACCESO A LA VIDA PÚBLICA',
+                subtitle: 'INTEGRIDAD NUMÉRICA GARANTIZADA.',
+                footer: 'INFORMACIÓN CULTURAL LIBRE, CERO RASTREO: COMBATIMOS LA EXTRACCIÓN DE DATOS DE LAS BIG TECH PARA QUE VIVAS TU COMUNIDAD CON TOTAL SOBERANÍA Y ANONIMATO.',
+                section2Title: 'Información Cultural sin redes',
+                missionPhrase: 'Estamos construyendo activamente una plataforma ética y responsable que te permite descubrir eventos culturales sin comprometer tus derechos digitales.',
+                aboutLink: 'Saber Más →'
+            },
+            // Allemand
+            de: {
+                mainTitle: 'ZUGANG ZUM ÖFFENTLICHEN LEBEN',
+                subtitle: 'DIGITALE INTEGRITÄT GARANTIERT.',
+                footer: 'FREIE KULTURINFORMATION, NULL TRACKING: WIR BEKÄMPFEN DIE DATENEXTRAKTION DER BIG TECH, DAMIT DU DEINE GEMEINSCHAFT MIT VOLLER SOUVERÄNITÄT UND ANONYMITÄT LEBEN KANNST.',
+                section2Title: 'Kulturinformation ohne Netzwerke',
+                missionPhrase: 'Wir bauen aktiv eine ethische und verantwortungsvolle Plattform auf, die es dir ermöglicht, kulturelle Veranstaltungen zu entdecken, ohne deine digitalen Rechte zu gefährden.',
+                aboutLink: 'Mehr Erfahren →'
+            },
+            // Italien
+            it: {
+                mainTitle: 'ACCESSO ALLA VITA PUBBLICA',
+                subtitle: 'INTEGRITÀ DIGITALE GARANTITA.',
+                footer: 'INFORMAZIONE CULTURALE LIBERA, ZERO TRACCIAMENTO: COMBATTIAMO L\'ESTRAZIONE DEI DATI DELLE BIG TECH AFFINCHÉ TU POSSA VIVERE LA TUA COMUNITÀ CON PIENA SOVRANITÀ E ANONIMATO.',
+                section2Title: 'Informazione Culturale senza reti',
+                missionPhrase: 'Stiamo costruendo attivamente una piattaforma etica e responsabile che ti permette di scoprire eventi culturali senza compromettere i tuoi diritti digitali.',
+                aboutLink: 'Scopri di Più →'
+            },
+            // Néerlandais
+            nl: {
+                mainTitle: 'TOEGANG TOT HET OPENBARE LEVEN',
+                subtitle: 'DIGITALE INTEGRITEIT GEGARANDEERD.',
+                footer: 'VRIJE CULTURELE INFORMATIE, GEEN TRACKING: WIJ BESTRIJDEN DE DATA-EXTRACTIE VAN BIG TECH ZODAT JE JE GEMEENSCHAP KUNT BELEVEN MET VOLLEDIGE SOEVEREINITEIT EN ANONIMITEIT.',
+                section2Title: 'Culturele Informatie zonder netwerken',
+                missionPhrase: 'We bouwen actief aan een ethisch en verantwoord platform waarmee je culturele evenementen kunt ontdekken zonder je digitale rechten in gevaar te brengen.'
+            },
+            // Polonais
+            pl: {
+                mainTitle: 'DOSTĘP DO ŻYCIA PUBLICZNEGO',
+                subtitle: 'CYFROWA INTEGRALNOŚĆ GWARANTOWANA.',
+                footer: 'WOLNA INFORMACJA KULTURALNA, ZERO ŚLEDZENIA: WALCZYMY Z EKSTRAKCJĄ DANYCH PRZEZ BIG TECH, ABYŚ MÓGŁ ŻYĆ W SWOJEJ SPOŁECZNOŚCI Z PEŁNĄ SUWERENNOŚCIĄ I ANONIMOWOŚCIĄ.',
+                section2Title: 'Informacja Kulturalna bez sieci',
+                missionPhrase: 'Aktywnie budujemy etyczną i odpowiedzialną platformę, która pozwala odkrywać wydarzenia kulturalne bez naruszania twoich praw cyfrowych.'
+            },
+            // Roumain
+            ro: {
+                mainTitle: 'ACCES LA VIAȚA PUBLICĂ',
+                subtitle: 'INTEGRITATE DIGITALĂ GARANTATĂ.',
+                footer: 'INFORMAȚIE CULTURALĂ LIBERĂ, ZERO URMĂRIRE: LUPTĂM ÎMPOTRIVA EXTRAGERII DATELOR DE CĂTRE BIG TECH PENTRU CA TU SĂ ÎȚI TRĂIEȘTI COMUNITATEA CU DEPLINĂ SUVERANITATE ȘI ANONIMAT.',
+                section2Title: 'Informație Culturală fără rețele',
+                missionPhrase: 'Construim activ o platformă etică și responsabilă care îți permite să descoperi evenimente culturale fără a-ți compromite drepturile digitale.'
+            },
+            // Grec
+            el: {
+                mainTitle: 'ΠΡΟΣΒΑΣΗ ΣΤΗ ΔΗΜΟΣΙΑ ΖΩΗ',
+                subtitle: 'ΕΓΓΥΗΜΕΝΗ ΨΗΦΙΑΚΗ ΑΚΕΡΑΙΟΤΗΤΑ.',
+                footer: 'ΕΛΕΥΘΕΡΗ ΠΟΛΙΤΙΣΤΙΚΗ ΠΛΗΡΟΦΟΡΙΑ, ΜΗΔΕΝΙΚΗ ΠΑΡΑΚΟΛΟΥΘΗΣΗ: ΚΑΤΑΠΟΛΕΜΟΥΜΕ ΤΗΝ ΕΞΑΓΩΓΗ ΔΕΔΟΜΕΝΩΝ ΤΩΝ BIG TECH ΓΙΑ ΝΑ ΖΕΙΣ ΤΗΝ ΚΟΙΝΟΤΗΤΑ ΣΟΥ ΜΕ ΠΛΗΡΗ ΚΥΡΙΑΡΧΙΑ ΚΑΙ ΑΝΩΝΥΜΙΑ.',
+                section2Title: 'Πολιτιστική Πληροφορία χωρίς δίκτυα',
+                missionPhrase: 'Χτίζουμε ενεργά μια ηθική και υπεύθυνη πλατφόρμα που σας επιτρέπει να ανακαλύψετε πολιτιστικές εκδηλώσεις χωρίς να διακυβεύονται τα ψηφιακά σας δικαιώματα.'
+            },
+            // Tchèque
+            cs: {
+                mainTitle: 'PŘÍSTUP K VEŘEJNÉMU ŽIVOTU',
+                subtitle: 'DIGITÁLNÍ INTEGRITA ZARUČENA.',
+                footer: 'SVOBODNÉ KULTURNÍ INFORMACE, NULOVÉ SLEDOVÁNÍ: BOJUJEME PROTI EXTRAKCI DAT BIG TECH, ABYSTE MOHLI ŽÍT SVOU KOMUNITU S PLNOU SUVERENITOU A ANONYMITOU.',
+                section2Title: 'Kulturní informace bez sítí',
+                missionPhrase: 'Aktivně budujeme etickou a zodpovědnou platformu, která vám umožní objevovat kulturní akce bez ohrožení vašich digitálních práv.'
+            },
+            // Hongrois
+            hu: {
+                mainTitle: 'HOZZÁFÉRÉS A KÖZÉLETHEZ',
+                subtitle: 'DIGITÁLIS INTEGRITÁS GARANTÁLVA.',
+                footer: 'SZABAD KULTURÁLIS INFORMÁCIÓ, NULLA KÖVETÉS: KÜZDÜNK A BIG TECH ADATKINYERÉSE ELLEN, HOGY TELJES SZUVERENITÁSSAL ÉS ANONIMITÁSSAL ÉLHESD MEG KÖZÖSSÉGEDET.',
+                section2Title: 'Kulturális Információ hálózatok nélkül',
+                missionPhrase: 'Aktívan építünk egy etikus és felelős platformot, amely lehetővé teszi kulturális események felfedezését digitális jogaid veszélyeztetése nélkül.'
+            },
+            // Suédois
+            sv: {
+                mainTitle: 'TILLGÅNG TILL DET OFFENTLIGA LIVET',
+                subtitle: 'DIGITAL INTEGRITET GARANTERAD.',
+                footer: 'FRI KULTURINFORMATION, NOLL SPÅRNING: VI BEKÄMPAR BIG TECHS DATAEXTRAKTION SÅ ATT DU KAN LEVA DITT SAMHÄLLE MED FULL SUVERÄNITET OCH ANONYMITET.',
+                section2Title: 'Kulturinformation utan nätverk',
+                missionPhrase: 'Vi bygger aktivt en etisk och ansvarsfull plattform som låter dig upptäcka kulturevenemang utan att kompromissa med dina digitala rättigheter.'
+            },
+            // Danois
+            da: {
+                mainTitle: 'ADGANG TIL DET OFFENTLIGE LIV',
+                subtitle: 'DIGITAL INTEGRITET GARANTERET.',
+                footer: 'FRI KULTURINFORMATION, NUL SPORING: VI BEKÆMPER BIG TECHS DATAEKSTRAKTION, SÅ DU KAN LEVE DIT FÆLLESSKAB MED FULD SUVERÆNITET OG ANONYMITET.',
+                section2Title: 'Kulturinformation uden netværk',
+                missionPhrase: 'Vi bygger aktivt en etisk og ansvarlig platform, der lader dig opdage kulturelle begivenheder uden at kompromittere dine digitale rettigheder.'
+            },
+            // Finnois
+            fi: {
+                mainTitle: 'PÄÄSY JULKISEEN ELÄMÄÄN',
+                subtitle: 'DIGITAALINEN EHEYS TAATTU.',
+                footer: 'VAPAA KULTTUURITIETO, NOLLA SEURANTA: TAISTELEMME BIG TECHIN TIEDONKERUUTA VASTAAN, JOTTA VOIT ELÄÄ YHTEISÖÄSI TÄYDELLÄ SUVERENITEETILLA JA NIMETTÖMYYDELLÄ.',
+                section2Title: 'Kulttuuritietoa ilman verkkoja',
+                missionPhrase: 'Rakennamme aktiivisesti eettistä ja vastuullista alustaa, jonka avulla voit löytää kulttuuritapahtumia vaarantamatta digitaalisia oikeuksiasi.'
+            },
+            // Norvégien
+            no: {
+                mainTitle: 'TILGANG TIL DET OFFENTLIGE LIV',
+                subtitle: 'DIGITAL INTEGRITET GARANTERT.',
+                footer: 'FRI KULTURINFORMASJON, NULL SPORING: VI BEKJEMPER BIG TECHS DATAEKSTRAKSJON SÅ DU KAN LEVE DITT FELLESSKAP MED FULL SUVERENITET OG ANONYMITET.',
+                section2Title: 'Kulturinformasjon uten nettverk',
+                missionPhrase: 'Vi bygger aktivt en etisk og ansvarlig plattform som lar deg oppdage kulturelle arrangementer uten å kompromittere dine digitale rettigheter.'
+            },
+            // Bulgare
+            bg: {
+                mainTitle: 'ДОСТЪП ДО ОБЩЕСТВЕНИЯ ЖИВОТ',
+                subtitle: 'ГАРАНТИРАНА ЦИФРОВА ЦЯЛОСТ.',
+                footer: 'СВОБОДНА КУЛТУРНА ИНФОРМАЦИЯ, НУЛЕВО ПРОСЛЕДЯВАНЕ: БОРИМ СЕ С ИЗВЛИЧАНЕТО НА ДАННИ ОТ BIG TECH, ЗА ДА ЖИВЕЕШ ОБЩНОСТТА СИ С ПЪЛЕН СУВЕРЕНИТЕТ И АНОНИМНОСТ.',
+                section2Title: 'Културна информация без мрежи',
+                missionPhrase: 'Активно изграждаме етична и отговорна платформа, която ви позволява да откривате културни събития, без да компрометирате цифровите си права.'
+            },
+            // Croate
+            hr: {
+                mainTitle: 'PRISTUP JAVNOM ŽIVOTU',
+                subtitle: 'DIGITALNI INTEGRITET ZAJAMČEN.',
+                footer: 'SLOBODNA KULTURNA INFORMACIJA, NULA PRAĆENJA: BORIMO SE PROTIV EKSTRAKCIJE PODATAKA BIG TECH-A KAKO BI MOGAO ŽIVJETI SVOJU ZAJEDNICU S PUNOM SUVERENOŠĆU I ANONIMNOŠĆU.',
+                section2Title: 'Kulturna informacija bez mreža',
+                missionPhrase: 'Aktivno gradimo etičnu i odgovornu platformu koja vam omogućuje otkrivanje kulturnih događaja bez ugrožavanja vaših digitalnih prava.'
+            },
+            // Slovaque
+            sk: {
+                mainTitle: 'PRÍSTUP K VEREJNÉMU ŽIVOTU',
+                subtitle: 'DIGITÁLNA INTEGRITA ZARUČENÁ.',
+                footer: 'SLOBODNÉ KULTÚRNE INFORMÁCIE, NULOVÉ SLEDOVANIE: BOJUJEME PROTI EXTRAKCII DÁT BIG TECH, ABY STE MOHLI ŽIŤ SVOJU KOMUNITU S PLNOU SUVERENITOU A ANONYMITOU.',
+                section2Title: 'Kultúrne informácie bez sietí',
+                missionPhrase: 'Aktívne budujeme etickú a zodpovednú platformu, ktorá vám umožní objavovať kultúrne podujatia bez ohrozenia vašich digitálnych práv.'
+            },
+            // Slovène
+            sl: {
+                mainTitle: 'DOSTOP DO JAVNEGA ŽIVLJENJA',
+                subtitle: 'DIGITALNA INTEGRITETA ZAGOTOVLJENA.',
+                footer: 'SVOBODNE KULTURNE INFORMACIJE, NIČ SLEDENJA: BORIMO SE PROTI PRIDOBIVANJU PODATKOV BIG TECH, DA LAHKO ŽIVIŠ SVOJO SKUPNOST S POLNO SUVERENOSTJO IN ANONIMNOSTJO.',
+                section2Title: 'Kulturne informacije brez omrežij',
+                missionPhrase: 'Aktivno gradimo etično in odgovorno platformo, ki vam omogoča odkrivanje kulturnih dogodkov brez ogrožanja vaših digitalnih pravic.'
+            },
+            // Estonien
+            et: {
+                mainTitle: 'JUURDEPÄÄS AVALIKULE ELULE',
+                subtitle: 'DIGITAALNE TERVIKLIKKUS TAGATUD.',
+                footer: 'VABA KULTUURITEAVE, NULL JÄLGIMINE: VÕITLEME BIG TECHI ANDMETE KOGUMISE VASTU, ET SAAKSID ELADA OMA KOGUKONDA TÄIELIKU SUVERÄÄNSUSE JA ANONÜÜMSUSEGA.',
+                section2Title: 'Kultuuriteave ilma võrkudeta',
+                missionPhrase: 'Ehitame aktiivselt eetilist ja vastutustundlikku platvormi, mis võimaldab avastada kultuurisündmusi ilma oma digitaalseid õigusi ohtu seadmata.'
+            },
+            // Letton
+            lv: {
+                mainTitle: 'PIEKĻUVE SABIEDRISKAJAI DZĪVEI',
+                subtitle: 'DIGITĀLĀ INTEGRITĀTE GARANTĒTA.',
+                footer: 'BRĪVA KULTŪRAS INFORMĀCIJA, NULLES IZSEKOŠANA: MĒS CĪNĀMIES PRET BIG TECH DATU IEGUVI, LAI TU VARĒTU DZĪVOT SAVĀ KOPIENĀ AR PILNU SUVERENITĀTI UN ANONIMITĀTI.',
+                section2Title: 'Kultūras informācija bez tīkliem',
+                missionPhrase: 'Mēs aktīvi veidojam ētisku un atbildīgu platformu, kas ļauj atklāt kultūras pasākumus, neapdraudot jūsu digitālās tiesības.'
+            },
+            // Lituanien
+            lt: {
+                mainTitle: 'PRIEIGA PRIE VIEŠOJO GYVENIMO',
+                subtitle: 'SKAITMENINIS VIENTISUMAS GARANTUOTAS.',
+                footer: 'LAISVA KULTŪRINĖ INFORMACIJA, JOKIO SEKIMO: MES KOVOJAME SU BIG TECH DUOMENŲ IŠGAVIMU, KAD GALĖTUM GYVENTI SAVO BENDRUOMENĖJE SU VISIŠKU SUVERENUMU IR ANONIMIŠKUMU.',
+                section2Title: 'Kultūrinė informacija be tinklų',
+                missionPhrase: 'Aktyviai kuriame etišką ir atsakingą platformą, leidžiančią atrasti kultūrinius renginius nepažeidžiant jūsų skaitmeninių teisių.'
+            },
+            // Maltais
+            mt: {
+                mainTitle: 'AĊĊESS GĦALL-ĦAJJA PUBBLIKA',
+                subtitle: 'INTEGRITÀ DIĠITALI GARANTITA.',
+                footer: 'INFORMAZZJONI KULTURALI ĦIELSA, TRAĊĊAR ŻERO: NIĠĠIELDU L-ESTRAZZJONI TAD-DATA TAL-BIG TECH BIEX TISTA\' TGĦIX IL-KOMUNITÀ TIEGĦEK B\'SOVRANITÀ U ANONIMITÀ SĦIĦA.',
+                section2Title: 'Informazzjoni Kulturali mingħajr networks',
+                missionPhrase: 'Qed nibnu b\'mod attiv pjattaforma etika u responsabbli li tippermetti tiskopri avvenimenti kulturali mingħajr ma tikkomprometti d-drittijiet diġitali tiegħek.'
+            },
+            // Irlandais
+            ga: {
+                mainTitle: 'ROCHTAIN AR AN SAOL POIBLÍ',
+                subtitle: 'SLÁINE DHIGITEACH RÁTHAITHE.',
+                footer: 'FAISNÉIS CHULTÚRTHA SAOR, RIANÚ NÁD: TROIDIMID I GCOINNE EASTÓSCADH SONRAÍ BIG TECH IONAS GO MBEIDH TÚ IN ANN DO PHOBAL A MHAIREACHTÁIL LE CEANNASACHT IOMLÁN AGUS GAN AINM.',
+                section2Title: 'Faisnéis Chultúrtha gan líonraí',
+                missionPhrase: 'Táimid ag tógáil ardán eiticiúil agus freagrach go gníomhach a ligeann duit imeachtaí cultúrtha a fháil gan do chearta digiteacha a chur i mbaol.'
+            },
+            // Ukrainien
+            uk: {
+                mainTitle: 'ДОСТУП ДО ПУБЛІЧНОГО ЖИТТЯ',
+                subtitle: 'ЦИФРОВА ЦІЛІСНІСТЬ ГАРАНТОВАНА.',
+                footer: 'ВІЛЬНА КУЛЬТУРНА ІНФОРМАЦІЯ, НУЛЬОВЕ ВІДСТЕЖЕННЯ: МИ БОРЕМОСЯ З ВИТЯГУВАННЯМ ДАНИХ BIG TECH, ЩОБ ВИ МОГЛИ ЖИТИ У СВОЇЙ ГРОМАДІ З ПОВНИМ СУВЕРЕНІТЕТОМ ТА АНОНІМНІСТЮ.',
+                section2Title: 'Культурна інформація без мереж',
+                missionPhrase: 'Ми активно будуємо етичну та відповідальну платформу, яка дозволяє відкривати культурні події без компрометації ваших цифрових прав.'
+            },
+            // Serbe
+            sr: {
+                mainTitle: 'ПРИСТУП ЈАВНОМ ЖИВОТУ',
+                subtitle: 'ДИГИТАЛНИ ИНТЕГРИТЕТ ГАРАНТОВАН.',
+                footer: 'СЛОБОДНА КУЛТУРНА ИНФОРМАЦИЈА, НУЛА ПРАЋЕЊА: БОРИМО СЕ ПРОТИВ ЕКСТРАКЦИЈЕ ПОДАТАКА BIG TECH-А КАКО БИСТЕ МОГЛИ ЖИВЕТИ СВОЈУ ЗАЈЕДНИЦУ СА ПУНИМ СУВЕРЕНИТЕТОМ И АНОНИМНОШЋУ.',
+                section2Title: 'Културна информација без мрежа',
+                missionPhrase: 'Активно градимо етичну и одговорну платформу која вам омогућава да откријете културне догађаје без угрожавања ваших дигиталних права.'
+            },
+            // Catalan
+            ca: {
+                mainTitle: 'ACCÉS A LA VIDA PÚBLICA',
+                subtitle: 'INTEGRITAT DIGITAL GARANTIDA.',
+                footer: 'INFORMACIÓ CULTURAL LLIURE, ZERO RASTREIG: LLUITEM CONTRA L\'EXTRACCIÓ DE DADES DE LES BIG TECH PERQUÈ PUGUIS VIURE LA TEVA COMUNITAT AMB TOTAL SOBIRANIA I ANONIMAT.',
+                section2Title: 'Informació Cultural sense xarxes',
+                missionPhrase: 'Estem construint activament una plataforma ètica i responsable que et permet descobrir esdeveniments culturals sense comprometre els teus drets digitals.'
+            },
+            // Basque
+            eu: {
+                mainTitle: 'BIZITZA PUBLIKORAKO SARBIDEA',
+                subtitle: 'OSOTASUN DIGITALA BERMATUTA.',
+                footer: 'KULTUR INFORMAZIO LIBREA, ZERO JARRAIPENA: BIG TECH-EN DATUEN ATERATZEA BORROKATZEN DUGU ZURE KOMUNITATEA SUBIRANOTASUN ETA ANONIMOTASUN OSOZ BIZI DEZAZUN.',
+                section2Title: 'Kultur Informazioa sarerik gabe',
+                missionPhrase: 'Plataforma etiko eta arduratsua eraikitzen ari gara aktiboki, zure eskubide digitalak arriskuan jarri gabe kultur ekitaldiak aurkitzeko aukera ematen dizuna.'
+            },
+            // Galicien
+            gl: {
+                mainTitle: 'ACCESO Á VIDA PÚBLICA',
+                subtitle: 'INTEGRIDADE DIXITAL GARANTIDA.',
+                footer: 'INFORMACIÓN CULTURAL LIBRE, CERO RASTREXO: LOITAMOS CONTRA A EXTRACCIÓN DE DATOS DAS BIG TECH PARA QUE VIVAS A TÚA COMUNIDADE CON TOTAL SOBERANÍA E ANONIMATO.',
+                section2Title: 'Información Cultural sen redes',
+                missionPhrase: 'Estamos a construír activamente unha plataforma ética e responsable que che permite descubrir eventos culturais sen comprometer os teus dereitos dixitais.'
+            },
+            // Islandais
+            is: {
+                mainTitle: 'AÐGANGUR AÐ ALMENNU LÍFI',
+                subtitle: 'STAFRÆN HEILINDI TRYGGÐ.',
+                footer: 'FRJÁLS MENNINGARUPPLÝSINGAR, EKKERT EFTIRLIT: VIÐ BÖRÐUMST GEGN GAGNAVINNSLU BIG TECH SVO ÞÚ GETIR LIFAÐ SAMFÉLAGINU ÞÍNU MEÐ FULLRI FULLVELDI OG NAFNLEYND.',
+                section2Title: 'Menningarupplýsingar án neta',
+                missionPhrase: 'Við erum virkan að byggja siðferðilegan og ábyrgan vettvang sem gerir þér kleift að uppgötva menningarviðburði án þess að skerða stafræn réttindi þín.'
+            },
+            // Albanais
+            sq: {
+                mainTitle: 'QASJE NË JETËN PUBLIKE',
+                subtitle: 'INTEGRITETI DIXHITAL I GARANTUAR.',
+                footer: 'INFORMACION KULTUROR I LIRË, ZERO GJURMIM: LUFTOJMË KUNDËR NXJERRJES SË TË DHËNAVE NGA BIG TECH QË TË JETOSH KOMUNITETIN TËND ME SOVRANITET DHE ANONIMITET TË PLOTË.',
+                section2Title: 'Informacion Kulturor pa rrjete',
+                missionPhrase: 'Ne po ndërtojmë në mënyrë aktive një platformë etike dhe të përgjegjshme që ju lejon të zbuloni ngjarje kulturore pa kompromentuar të drejtat tuaja dixhitale.'
+            },
+            // Macédonien
+            mk: {
+                mainTitle: 'ПРИСТАП ДО ЈАВНИОТ ЖИВОТ',
+                subtitle: 'ДИГИТАЛЕН ИНТЕГРИТЕТ ГАРАНТИРАН.',
+                footer: 'СЛОБОДНА КУЛТУРНА ИНФОРМАЦИЈА, НУЛА СЛЕДЕЊЕ: СЕ БОРИМЕ ПРОТИВ ЕКСТРАКЦИЈАТА НА ПОДАТОЦИ ОД BIG TECH ЗА ДА ЈА ЖИВЕЕШ ТВОЈАТА ЗАЕДНИЦА СО ЦЕЛОСЕН СУВЕРЕНИТЕТ И АНОНИМНОСТ.',
+                section2Title: 'Културна информација без мрежи',
+                missionPhrase: 'Активно градиме етичка и одговорна платформа која ви овозможува да откривате културни настани без да ги загрозите вашите дигитални права.'
+            },
+            // Bosniaque
+            bs: {
+                mainTitle: 'PRISTUP JAVNOM ŽIVOTU',
+                subtitle: 'DIGITALNI INTEGRITET GARANTIRAN.',
+                footer: 'SLOBODNA KULTURNA INFORMACIJA, NULA PRAĆENJA: BORIMO SE PROTIV EKSTRAKCIJE PODATAKA BIG TECH-A KAKO BI MOGAO ŽIVJETI SVOJU ZAJEDNICU S PUNOM SUVERENOŠĆU I ANONIMNOŠĆU.',
+                section2Title: 'Kulturna informacija bez mreža',
+                missionPhrase: 'Aktivno gradimo etičnu i odgovornu platformu koja vam omogućava da otkrijete kulturne događaje bez ugrožavanja vaših digitalnih prava.'
+            },
+            // Luxembourgeois
+            lb: {
+                mainTitle: 'ZOUGANG ZUM ËFFENTLECHE LIEWEN',
+                subtitle: 'DIGITAL INTEGRITÉIT GARANTÉIERT.',
+                footer: 'FRÄI KULTURINFORMATIOUN, NULL TRACKING: MIR KÄMPFEN GÉINT D\'DATEEXTRAKTIOUN VUN BIG TECH FIR DASS DU DENG GEMEINSCHAFT MAT VOLLER SOUVERÄNITÉIT AN ANONYMITÉIT LIEWE KANNS.',
+                section2Title: 'Kulturinformatioun ouni Netzwierker',
+                missionPhrase: 'Mir bauen aktiv eng ethesch an responsabel Plattform, déi iech erlaabt kulturell Evenementer z\'entdecken ouni Är digital Rechter ze kompromittéieren.'
+            }
+        };
+
+        // Appliquer une langue spécifique
+        function applyLanguage(langCode) {
+            const lang = translations[langCode] || translations['en'];
+            
+            // Appliquer les traductions
+            const mainTitle = document.querySelector('.main-title');
+            const subtitle = document.querySelector('.subtitle');
+            const heroFooter = document.getElementById('heroFooter');
+            const missionPhrase = document.getElementById('missionPhrase');
+            const aboutLink = document.getElementById('aboutLink');
+            
+            if (mainTitle) mainTitle.textContent = lang.mainTitle;
+            if (subtitle) subtitle.textContent = lang.subtitle;
+            if (heroFooter && lang.footer) heroFooter.textContent = lang.footer;
+            if (missionPhrase && lang.missionPhrase) missionPhrase.textContent = lang.missionPhrase;
+            if (aboutLink && lang.aboutLink) aboutLink.textContent = lang.aboutLink;
+            
+            // Mettre à jour l'attribut lang du HTML
+            document.documentElement.lang = langCode;
+            
+            // Mettre à jour les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                if (btn.dataset.lang === langCode) {
+                    btn.style.background = '#1465ff';
+                    btn.style.color = '#fff';
+                } else {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#1465ff';
+                }
+            });
+        }
+        
+        // Détecter la langue du navigateur et appliquer la traduction
+        function detectAndApplyLanguage() {
+            // Utiliser uniquement la langue du navigateur (pas de stockage persistant)
+            const browserLang = navigator.language || navigator.userLanguage;
+            const langCode = browserLang.split('-')[0].toLowerCase();
+            applyLanguage(langCode);
+        }
+
+        // Appliquer la langue au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            detectAndApplyLanguage();
+            
+            // Ajouter les événements de clic sur les boutons de langue
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    applyLanguage(btn.dataset.lang);
+                });
+            });
+        });
+
+        // Choisir aléatoirement la direction du tour
+        function randomizeJump() {
+            const fishGroup = document.querySelector('.fish-group');
+            if (fishGroup) {
+                fishGroup.classList.remove('jump-right', 'jump-left');
+                const direction = Math.random() > 0.5 ? 'jump-right' : 'jump-left';
+                fishGroup.classList.add(direction);
+            }
+        }
+        
+        // Changer de direction à chaque cycle (20s)
+        randomizeJump();
+        setInterval(randomizeJump, 20000);
+        
+        // ÉVÉNEMENTS RÉELS 2026 - Portugal
+        const eventos = [
+            // FESTIVALS
+            { nome: 'Rock in Rio Lisboa', local: 'Parque Tejo, Lisboa', data: '20-21, 27-28 Jun', tipo: 'Festival', 
+              artistas: 'Linkin Park, Katy Perry, Rod Stewart', img: 'https://rockinriolisboa.pt/assets/images/logo-rir.png' },
+            { nome: 'NOS Alive 2026', local: 'Passeio Marítimo, Algés', data: '9-11 Jul', tipo: 'Festival',
+              artistas: 'Foo Fighters, Lorde, Florence + The Machine', img: 'https://nosalive.com/wp-content/uploads/2024/01/nos-alive-logo.png' },
+            { nome: 'Primavera Sound Porto', local: 'Parque da Cidade, Porto', data: '11-14 Jun', tipo: 'Festival',
+              artistas: 'Gorillaz, Massive Attack, The xx', img: 'https://www.primaverasound.com/assets/images/logo-primavera.png' },
+            { nome: 'MEO Kalorama', local: 'Parque Bela Vista, Lisboa', data: '28-30 Ago', tipo: 'Festival',
+              artistas: 'Robbie Williams, Deftones, Interpol', img: 'https://meokalorama.pt/assets/logo-kalorama.png' },
+            { nome: 'Afro Nation Portugal', local: 'Praia da Rocha, Portimão', data: '3-5 Jul', tipo: 'Festival',
+              artistas: 'Wizkid, Tyla, Ludmilla', img: 'https://afronation.com/assets/logo.png' },
+            { nome: 'Ageas CoolJazz', local: 'Hipódromo, Cascais', data: '14-31 Jul', tipo: 'Jazz',
+              artistas: 'David Byrne, Jamiroquai, Chet Faker', img: 'https://cooljazz.pt/logo.png' },
+            // CONCERTOS ESTÁDIO
+            { nome: 'Bad Bunny', local: 'Estádio da Luz, Lisboa', data: '26-27 Mai', tipo: 'Concerto',
+              artistas: 'Most Wanted Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb0895066d172e1f51f520bc65' },
+            { nome: 'Iron Maiden', local: 'Estádio da Luz, Lisboa', data: '7 Jun', tipo: 'Metal',
+              artistas: 'Run For Your Lives Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb69ca98dd3083f1082d740e44' },
+            { nome: 'The Weeknd', local: 'Estádio Restelo, Lisboa', data: '5 Set', tipo: 'Pop',
+              artistas: 'After Hours Til Dawn', img: 'https://i.scdn.co/image/ab6761610000e5eb214f3cf1cbe7139c1e26ffbb' },
+            // CONCERTOS ARENAS
+            { nome: 'Rosalía', local: 'MEO Arena, Lisboa', data: '8-9 Abr', tipo: 'Pop',
+              artistas: 'World Tour 2026', img: 'https://i.scdn.co/image/ab6761610000e5eb5ab8f2f5f1a5a5a5a5a5a5a5' },
+            { nome: 'Hans Zimmer', local: 'MEO Arena, Lisboa', data: '31 Mar - 1 Abr', tipo: 'Clássica',
+              artistas: 'Live Orchestra', img: 'https://i.scdn.co/image/ab6761610000e5eb5d4800821d4d4400f0be5a67' },
+            { nome: 'Foo Fighters', local: 'NOS Alive, Algés', data: '9 Jul', tipo: 'Rock',
+              artistas: 'Headliner NOS Alive', img: 'https://i.scdn.co/image/ab6761610000e5eb9a43b87b50cd3d03544bb3e5' },
+            { nome: 'Doja Cat', local: 'MEO Arena, Lisboa', data: '2 Jun', tipo: 'Pop',
+              artistas: 'Scarlet Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb6a5e5d6c6f1a7a7b7c8d9e0f' },
+            { nome: 'Scorpions', local: 'MEO Arena, Lisboa', data: '8 Jul', tipo: 'Rock',
+              artistas: 'Love at First Sting Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb7be5d9fb8f1a5a5a5a5a5a5a' },
+            { nome: 'Evanescence', local: 'MEO Arena, Lisboa', data: '4 Out', tipo: 'Rock',
+              artistas: 'World Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb3da7b5a7a7b5c5d5e5f5a5b5' },
+            { nome: 'Lewis Capaldi', local: 'Praia Relógio, Figueira da Foz', data: '18 Jul', tipo: 'Pop',
+              artistas: 'Summer Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb4c7e7e7f8a9b0c1d2e3f4a5b' },
+            { nome: 'André Rieu', local: 'MEO Arena, Lisboa', data: '29-30 Out', tipo: 'Clássica',
+              artistas: 'World Tour 2026', img: 'https://i.scdn.co/image/ab6761610000e5eb9c8d8e9f0a1b2c3d4e5f6a7b' },
+            { nome: 'Laura Pausini', local: 'MEO Arena, Lisboa', data: '22 Out', tipo: 'Pop',
+              artistas: 'World Tour', img: 'https://i.scdn.co/image/ab6761610000e5eb2a3b4c5d6e7f8a9b0c1d2e3f' },
+            // VIANA DO CASTELO
+            { nome: 'Festas da Agonia', local: 'Viana do Castelo', data: '18-22 Ago', tipo: 'Tradição', artistas: 'Romaria tradicional' },
+            { nome: 'Festival Sobe à Vila', local: 'Caminha', data: '15-17 Jul', tipo: 'Festival', artistas: 'Música indie' },
+            // BRAGA
+            { nome: 'São João de Braga', local: 'Braga', data: '23-24 Jun', tipo: 'Tradição', artistas: 'Festas populares' },
+            { nome: 'Theatro Circo', local: 'Braga', data: '12 Mar', tipo: 'Clássica', artistas: 'Orquestra do Norte' },
+            { nome: 'Feira Medieval', local: 'Guimarães', data: '5-7 Jun', tipo: 'Tradição', artistas: 'Cultura medieval' },
+            { nome: 'Festival Noc Noc', local: 'Guimarães', data: '10-12 Set', tipo: 'Festival', artistas: 'Arte urbana' },
+            // VILA REAL
+            { nome: 'Douro Jazz', local: 'Peso da Régua', data: '8-10 Jul', tipo: 'Jazz', artistas: 'Jazz internacional' },
+            { nome: 'Feira do Folar', local: 'Valpaços', data: '27-29 Mar', tipo: 'Gastronomia', artistas: 'Produtos regionais' },
+            // BRAGANÇA
+            { nome: 'Feira das Cantarinhas', local: 'Bragança', data: '1-3 Mai', tipo: 'Tradição', artistas: 'Artesanato' },
+            { nome: 'Festival Celta', local: 'Miranda do Douro', data: '20-22 Ago', tipo: 'Festival', artistas: 'Música celta' },
+            // PORTO
+            { nome: 'São João do Porto', local: 'Porto', data: '23-24 Jun', tipo: 'Tradição', artistas: 'Festas populares' },
+            { nome: 'Serralves em Festa', local: 'Porto', data: '30-31 Mai', tipo: 'Festival', artistas: 'Arte contemporânea' },
+            { nome: 'Festival Marés Vivas', local: 'Vila Nova de Gaia', data: '17-19 Jul', tipo: 'Festival', artistas: 'Rock/Pop' },
+            { nome: 'Curtas Vila do Conde', local: 'Vila do Conde', data: '11-19 Jul', tipo: 'Cinema', artistas: 'Curtas-metragens' },
+            // AVEIRO
+            { nome: 'Festa da Ria', local: 'Aveiro', data: '25-27 Jul', tipo: 'Tradição', artistas: 'Moliceiros' },
+            { nome: 'Festival do Bacalhau', local: 'Ílhavo', data: '14-16 Ago', tipo: 'Gastronomia', artistas: 'Gastronomia local' },
+            { nome: 'Santa Joana', local: 'Aveiro', data: '12 Mai', tipo: 'Tradição', artistas: 'Procissão' },
+            // VISEU
+            { nome: 'Feira de São Mateus', local: 'Viseu', data: '6 Ago - 15 Set', tipo: 'Festival', artistas: 'Maior feira Portugal' },
+            { nome: 'Festival das Artes', local: 'Mangualde', data: '22-24 Jul', tipo: 'Festival', artistas: 'Artes performativas' },
+            // GUARDA
+            { nome: 'Festival da Serra', local: 'Guarda', data: '8-10 Ago', tipo: 'Festival', artistas: 'Música popular' },
+            { nome: 'Festival Altitudes', local: 'Seia', data: '5-7 Set', tipo: 'Festival', artistas: 'Rock alternativo' },
+            // COIMBRA
+            { nome: 'Queima das Fitas', local: 'Coimbra', data: '8-15 Mai', tipo: 'Festival', artistas: 'Festas académicas' },
+            { nome: 'Festival das Artes', local: 'Coimbra', data: '6-14 Jul', tipo: 'Festival', artistas: 'Artes performativas' },
+            { nome: 'Feira Medieval', local: 'Montemor-o-Velho', data: '10-12 Jul', tipo: 'Tradição', artistas: 'Época medieval' },
+            // CASTELO BRANCO
+            { nome: 'Festival Fora do Lugar', local: 'Castelo Branco', data: '24-26 Jul', tipo: 'Festival', artistas: 'Música alternativa' },
+            { nome: 'Festival Amoras', local: 'Covilhã', data: '17-19 Jul', tipo: 'Festival', artistas: 'Rock/Pop PT' },
+            // LEIRIA
+            { nome: 'Festival Entroncamento', local: 'Entroncamento', data: '8-10 Ago', tipo: 'Festival', artistas: 'Música variada' },
+            { nome: 'Feira do Chocolate', local: 'Óbidos', data: '1-25 Mar', tipo: 'Gastronomia', artistas: 'Chocolate artesanal' },
+            { nome: 'Natal em Óbidos', local: 'Óbidos', data: '29 Nov - 31 Dez', tipo: 'Tradição', artistas: 'Vila Natal' },
+            { nome: 'Carnaval de Torres Vedras', local: 'Torres Vedras', data: '13-18 Fev', tipo: 'Tradição', artistas: 'Carnaval tradicional' },
+            // SANTARÉM
+            { nome: 'Festival Nacional de Gastronomia', local: 'Santarém', data: '22 Out - 1 Nov', tipo: 'Gastronomia', artistas: 'Gastronomia PT' },
+            { nome: 'Feira da Agricultura', local: 'Santarém', data: '30 Mai - 7 Jun', tipo: 'Tradição', artistas: 'Agricultura' },
+            { nome: 'Festival Bons Sons', local: 'Cem Soldos, Tomar', data: '7-10 Ago', tipo: 'Festival', artistas: 'Música portuguesa' },
+            // PORTALEGRE
+            { nome: 'Festival Montanha Mágica', local: 'Castelo de Vide', data: '15-17 Mai', tipo: 'Festival', artistas: 'Música folk' },
+            { nome: 'Festas do Povo', local: 'Campo Maior', data: '1-8 Set', tipo: 'Tradição', artistas: 'Flores de papel' },
+            // ÉVORA
+            { nome: 'Festival Sete Sóis Sete Luas', local: 'Évora', data: '18-27 Jul', tipo: 'Festival', artistas: 'Música do mundo' },
+            { nome: 'Feira de São João', local: 'Évora', data: '22-29 Jun', tipo: 'Tradição', artistas: 'Feira tradicional' },
+            // BEJA
+            { nome: 'Festival Terras Sem Sombra', local: 'Beja', data: 'Mar-Jun', tipo: 'Clássica', artistas: 'Música sacra' },
+            { nome: 'Ovibeja', local: 'Beja', data: '23 Abr - 2 Mai', tipo: 'Tradição', artistas: 'Feira agrícola' },
+            { nome: 'Festival do Cante', local: 'Serpa', data: '4-6 Set', tipo: 'Tradição', artistas: 'Cante alentejano' },
+            // SETÚBAL
+            { nome: 'Festival Músicas do Mundo', local: 'Sines', data: '17-20 Jul', tipo: 'Festival', artistas: 'World music' },
+            { nome: 'Festival Sudoeste', local: 'Zambujeira do Mar', data: '5-8 Ago', tipo: 'Festival', artistas: 'Música alternativa' },
+            { nome: 'Festas do Barrete Verde', local: 'Alcochete', data: '15-17 Ago', tipo: 'Tradição', artistas: 'Festas populares' },
+            // FARO (ALGARVE)
+            { nome: 'Festival do Marisco', local: 'Olhão', data: '8-13 Ago', tipo: 'Gastronomia', artistas: 'Marisco algarvio' },
+            { nome: 'Concentração de Motos', local: 'Faro', data: '16-19 Jul', tipo: 'Festival', artistas: 'Motociclismo' },
+            { nome: 'Festival F', local: 'Faro', data: '3-5 Set', tipo: 'Festival', artistas: 'Música pop/rock' },
+            { nome: 'Feira Medieval', local: 'Silves', data: '7-16 Ago', tipo: 'Tradição', artistas: 'Época medieval' },
+            { nome: 'Festival da Sardinha', local: 'Portimão', data: '1-5 Ago', tipo: 'Gastronomia', artistas: 'Sardinhas assadas' },
+            { nome: 'Carnaval de Loulé', local: 'Loulé', data: '13-18 Fev', tipo: 'Tradição', artistas: 'Carnaval tradicional' },
+            // MADEIRA
+            { nome: 'Festa da Flor', local: 'Funchal, Madeira', data: '1-24 Mai', tipo: 'Tradição', artistas: 'Flores da Madeira' },
+            { nome: 'Festas de São João', local: 'Funchal, Madeira', data: '20-24 Jun', tipo: 'Tradição', artistas: 'Arraiais populares' },
+            { nome: 'Festival do Atlântico', local: 'Funchal, Madeira', data: 'Jun', tipo: 'Festival', artistas: 'Fogo de artifício' },
+            // AÇORES
+            { nome: 'Festas do Senhor Santo Cristo', local: 'Ponta Delgada, Açores', data: '15-18 Mai', tipo: 'Tradição', artistas: 'Romaria' },
+            { nome: 'Semana do Mar', local: 'Horta, Açores', data: '2-9 Ago', tipo: 'Festival', artistas: 'Cultura marítima' },
+            { nome: 'Festival Walk&Talk', local: 'Açores', data: '10-19 Jul', tipo: 'Festival', artistas: 'Arte contemporânea' },
+        ];
+        
+        // Générer les cartes d'événements avec emojis
+        function createEventCard(evento) {
+            const emojis = {
+                'Festival': '🎪', 'Jazz': '🎷', 'Concerto': '🎶', 'Metal': '🤘',
+                'Pop': '🌟', 'Rock': '🎸', 'Clássica': '🎻', 'Rock PT': '🇵🇹', 'Pop PT': '🇵🇹',
+                'Tradição': '🎭', 'Gastronomia': '🍷', 'Cinema': '🎬'
+            };
+            const emoji = emojis[evento.tipo] || '🎵';
+            
+            return `
+                <div class="event-card">
+                    <div class="event-emoji">${emoji}</div>
+                    <div class="event-type">${evento.tipo}</div>
+                    <div class="event-date">📅 ${evento.data}</div>
+                    <div class="event-name">${evento.nome}</div>
+                    <div class="event-location">📍 ${evento.local}</div>
+                    <div class="event-artistas">${evento.artistas}</div>
+                </div>
+            `;
+        }
+        
+        // Système de vignettes avec transition fade aléatoire
+        const container = document.getElementById('eventsContainer');
+        let currentIndex = -1;
+        let usedIndices = [];
+        
+        // Créer toutes les cartes (cachées)
+        eventos.forEach((evento, index) => {
+            const card = document.createElement('div');
+            card.innerHTML = createEventCard(evento);
+            const cardElement = card.firstElementChild;
+            cardElement.dataset.index = index;
+            container.appendChild(cardElement);
+        });
+        
+        // Fonction pour obtenir un index aléatoire différent
+        function getRandomIndex() {
+            if (usedIndices.length >= eventos.length) {
+                usedIndices = []; // Reset quand tous ont été montrés
+            }
+            let newIndex;
+            do {
+                newIndex = Math.floor(Math.random() * eventos.length);
+            } while (usedIndices.includes(newIndex) || newIndex === currentIndex);
+            usedIndices.push(newIndex);
+            return newIndex;
+        }
+        
+        // Transition vers la prochaine vignette
+        function showNextEvent() {
+            const cards = container.querySelectorAll('.event-card');
+            
+            // Fade out current
+            if (currentIndex >= 0) {
+                cards[currentIndex].classList.remove('active');
+                cards[currentIndex].classList.add('fade-out');
+            }
+            
+            // Get random next
+            const nextIndex = getRandomIndex();
+            
+            // Fade in next (après un petit délai)
+            setTimeout(() => {
+                if (currentIndex >= 0) {
+                    cards[currentIndex].classList.remove('fade-out');
+                }
+                cards[nextIndex].classList.add('active');
+                currentIndex = nextIndex;
+            }, 600);
+        }
+        
+        // Démarrer les transitions
+        showNextEvent();
+        setInterval(showNextEvent, 4000); // Change toutes les 4 secondes
+        
+        // Initialiser la section
+        const sectionHero = document.querySelector('.section-hero');
+        sectionHero.classList.add('active');
+    </script>
+</body>
+</html>

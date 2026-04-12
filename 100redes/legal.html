@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales - 100redes.eu</title>
+    
+    <!-- Favicon intégré -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58.862274 58.866558'%3E%3Cg transform='translate(-117.475,-56.356249)'%3E%3Cpath fill='%231465ff' d='m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z'/%3E%3Cpath fill='%23ffffff' d='m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z'/%3E%3Ccircle fill='%2318207d' cx='153.08864' cy='89.09008' r='1.7464216'/%3E%3Ccircle fill='%2318207d' cx='141.04666' cy='89.09008' r='1.7464216'/%3E%3C/g%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 2rem 0;
+        }
+        
+        .logo-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .logo-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #1465ff;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: #1465ff;
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid #1465ff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .back-link:hover {
+            background: #1465ff;
+            color: #fff;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #1465ff;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1465ff;
+            padding-bottom: 0.5rem;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin: 2rem 0 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.2rem;
+            color: #333;
+        }
+        
+        .highlight {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-left: 4px solid #1465ff;
+            margin: 2rem 0;
+        }
+        
+        strong {
+            color: #1465ff;
+        }
+        
+        ul {
+            margin: 1rem 0 1rem 2rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            color: #333;
+        }
+        
+        a {
+            color: #1465ff;
+            text-decoration: underline;
+        }
+        
+        a:hover {
+            color: #0d4ec4;
+        }
+        
+        .info-box {
+            background: #fff9e6;
+            border: 2px solid #ffd700;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <svg class="logo-svg" viewBox="0 0 58.862274 58.866558" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(-117.475,-56.356249)">
+                        <path style="fill:#1465ff;fill-opacity:1;" d="m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z" />
+                        <path style="fill:#ffffff;" d="m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z" />
+                        <circle style="fill:#18207d;fill-opacity:1;" cx="153.08864" cy="89.09008" r="1.7464216" />
+                        <circle style="fill:#18207d;fill-opacity:1;" cx="141.04666" cy="89.09008" r="1.7464216" />
+                    </g>
+                </svg>
+            </div>
+            <h1>Mentions Légales</h1>
+            <p class="tagline">Transparence et Conformité RGPD</p>
+            <a href="index.html" class="back-link">← Retour à l'Accueil</a>
+        </header>
+
+        <section>
+            <h2>1. Éditeur du Site</h2>
+            
+            <h3>1.1 Responsable de la Publication</h3>
+            <p>
+                <strong>Nom du site :</strong> 100redes.eu<br>
+                <strong>Nature :</strong> Plateforme d'information culturelle à but non lucratif<br>
+                <strong>Éditeur :</strong> 100redes.eu<br>
+                <strong>Statut :</strong> Projet indépendant à but non lucratif<br>
+                <strong>Localisation :</strong> Suisse<br>
+                <strong>Contact :</strong> <a href="mailto:social@100redes.pt">social@100redes.pt</a>
+            </p>
+            
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                100redes.eu est un projet indépendant géré de manière bénévole, sans structure juridique formelle. 
+                Le site est hébergé en Suisse et respecte les législations suisse et européenne en matière de protection des données.
+            </p>
+            
+            <h3>1.2 Hébergement</h3>
+            <p>
+                <strong>Hébergeur :</strong> Infomaniak Network SA<br>
+                <strong>Adresse :</strong> Rue Eugène-Marziano 25, 1227 Genève, Suisse<br>
+                <strong>Site web :</strong> <a href="https://www.infomaniak.com" target="_blank" rel="noopener noreferrer">www.infomaniak.com</a><br>
+                <strong>Téléphone :</strong> +41 22 820 35 44
+            </p>
+            
+            <div class="info-box">
+                <strong>ℹ️ Note :</strong> Infomaniak est un hébergeur suisse respectueux de la vie privée, certifié ISO 27001 (sécurité) et alimenté à 100% par des énergies renouvelables. Les données sont hébergées exclusivement en Suisse, garantissant une protection maximale selon la législation suisse sur la protection des données (LPD).
+            </div>
+        </section>
+
+        <section>
+            <h2>2. Politique de Confidentialité</h2>
+            
+            <h3>2.1 Collecte de Données</h3>
+            <div class="highlight">
+                <p><strong>100redes.eu ne collecte AUCUNE donnée personnelle.</strong></p>
+            </div>
+            
+            <p>Notre plateforme respecte strictement votre vie privée :</p>
+            <ul>
+                <li><strong>Aucun cookie</strong> de tracking ou de publicité</li>
+                <li><strong>Aucun stockage persistant</strong> de données (pas de localStorage, pas de cookies)</li>
+                <li><strong>Aucun service tiers</strong> (pas de Google Analytics, Facebook Pixel, etc.)</li>
+                <li><strong>Aucun compte utilisateur</strong> requis</li>
+                <li><strong>Aucune adresse email</strong> collectée</li>
+            </ul>
+
+            <h3>2.2 Détection de Langue</h3>
+            <p>
+                La seule information technique utilisée est la <strong>langue de votre navigateur</strong> (via <code>navigator.language</code>), 
+                qui est lue temporairement pour afficher le contenu dans votre langue. Cette information :
+            </p>
+            <ul>
+                <li>N'est <strong>jamais stockée</strong> sur votre appareil</li>
+                <li>N'est <strong>jamais envoyée</strong> à un serveur</li>
+                <li>Est <strong>oubliée</strong> dès que vous fermez la page</li>
+            </ul>
+
+            <h3>2.3 Logs Serveur</h3>
+            <p>
+                Comme tout site web, notre hébergeur peut conserver des logs techniques standards (adresse IP, date/heure de visite, pages consultées) 
+                pour des raisons de sécurité et de maintenance. Ces logs :
+            </p>
+            <ul>
+                <li>Sont conservés pour une durée limitée (généralement 30 jours maximum)</li>
+                <li>Ne sont jamais utilisés à des fins commerciales ou de profilage</li>
+                <li>Sont protégés et non partagés avec des tiers</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>3. Conformité RGPD</h2>
+            
+            <p>
+                100redes.eu est conforme au <strong>Règlement Général sur la Protection des Données (RGPD)</strong> 
+                de l'Union Européenne (Règlement UE 2016/679).
+            </p>
+
+            <h3>3.1 Vos Droits</h3>
+            <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+            <ul>
+                <li><strong>Droit d'accès :</strong> Vous pouvez demander quelles données nous détenons sur vous (réponse : aucune)</li>
+                <li><strong>Droit de rectification :</strong> Vous pouvez demander la correction de vos données (non applicable)</li>
+                <li><strong>Droit à l'effacement :</strong> Vous pouvez demander la suppression de vos données (non applicable)</li>
+                <li><strong>Droit d'opposition :</strong> Vous pouvez vous opposer au traitement de vos données (non applicable)</li>
+                <li><strong>Droit à la portabilité :</strong> Vous pouvez demander vos données dans un format structuré (non applicable)</li>
+            </ul>
+
+            <div class="highlight">
+                <p>
+                    <strong>En pratique :</strong> Puisque nous ne collectons aucune donnée personnelle, 
+                    ces droits ne s'appliquent pas. Vous n'avez aucune démarche à effectuer.
+                </p>
+            </div>
+
+            <h3>3.2 Base Légale</h3>
+            <p>
+                Notre plateforme ne nécessite <strong>aucune base légale</strong> pour le traitement de données personnelles, 
+                car nous n'en collectons aucune.
+            </p>
+
+            <h3>3.3 Transferts Internationaux</h3>
+            <p>
+                Aucune donnée personnelle n'est transférée en dehors de l'Union Européenne.
+            </p>
+        </section>
+
+        <section>
+            <h2>4. Cookies et Technologies Similaires</h2>
+            
+            <div class="highlight">
+                <p><strong>100redes.eu n'utilise AUCUN cookie.</strong></p>
+            </div>
+
+            <p>Nous n'utilisons pas :</p>
+            <ul>
+                <li>Cookies de session</li>
+                <li>Cookies persistants</li>
+                <li>Cookies de tracking</li>
+                <li>Cookies publicitaires</li>
+                <li>Cookies de réseaux sociaux</li>
+                <li>localStorage ou sessionStorage</li>
+                <li>IndexedDB</li>
+            </ul>
+
+            <p>
+                <strong>Aucun banner de consentement</strong> n'est nécessaire car nous ne stockons rien sur votre appareil.
+            </p>
+        </section>
+
+        <section>
+            <h2>5. Propriété Intellectuelle</h2>
+            
+            <h3>5.1 Code Source</h3>
+            <p>
+                Le code source de 100redes.eu est publié sous <strong>licence MIT</strong>, 
+                une licence open source permissive. Vous êtes libre de :
+            </p>
+            <ul>
+                <li>Utiliser le code à des fins commerciales ou personnelles</li>
+                <li>Modifier le code</li>
+                <li>Distribuer le code</li>
+                <li>Créer des œuvres dérivées</li>
+            </ul>
+            <p>
+                Le texte complet de la licence est disponible dans le fichier 
+                <a href="LICENSE" target="_blank">LICENSE</a>.
+            </p>
+
+            <h3>5.2 Contenu</h3>
+            <p>
+                Les informations sur les événements culturels sont collectées depuis des sources publiques 
+                et sont présentées à titre informatif. Les droits sur ces contenus appartiennent à leurs auteurs respectifs.
+            </p>
+        </section>
+
+        <section>
+            <h2>6. Liens Externes</h2>
+            <p>
+                100redes.eu peut contenir des liens vers des sites externes (organisateurs d'événements, 
+                organisations partenaires, etc.). Nous ne sommes pas responsables :
+            </p>
+            <ul>
+                <li>Du contenu de ces sites externes</li>
+                <li>De leurs pratiques en matière de confidentialité</li>
+                <li>De leur utilisation de cookies ou de tracking</li>
+            </ul>
+            <p>
+                Nous vous recommandons de consulter les politiques de confidentialité de ces sites avant de les utiliser.
+            </p>
+        </section>
+
+        <section>
+            <h2>7. Sécurité</h2>
+            <p>
+                Bien que nous ne collections aucune donnée personnelle, nous prenons la sécurité au sérieux :
+            </p>
+            <ul>
+                <li><strong>HTTPS :</strong> Toutes les connexions sont chiffrées</li>
+                <li><strong>Pas de formulaires :</strong> Aucun risque d'injection ou de vol de données</li>
+                <li><strong>Code statique :</strong> Pas de base de données vulnérable</li>
+                <li><strong>Pas de JavaScript tiers :</strong> Aucune dépendance externe potentiellement compromise</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>8. Contact</h2>
+            <p>
+                Pour toute question concernant ces mentions légales ou notre politique de confidentialité, 
+                vous pouvez nous contacter :
+            </p>
+            <p>
+                <strong>Email :</strong> <a href="mailto:social@100redes.pt">social@100redes.pt</a>
+            </p>
+            <p>
+                Nous nous engageons à répondre à toutes les demandes dans un délai de 72 heures.
+            </p>
+        </section>
+
+        <section>
+            <h2>9. Modifications</h2>
+            <p>
+                Nous nous réservons le droit de modifier ces mentions légales à tout moment. 
+                La date de dernière mise à jour est indiquée ci-dessous.
+            </p>
+            <p>
+                <strong>Dernière mise à jour :</strong> 12 avril 2026
+            </p>
+        </section>
+
+        <section>
+            <h2>10. Transparence Technique</h2>
+            <p>
+                Dans un souci de transparence totale, voici les détails techniques de notre plateforme :
+            </p>
+            <ul>
+                <li><strong>Technologies :</strong> HTML5, CSS3, JavaScript ES6+ (vanilla, pas de framework)</li>
+                <li><strong>Librairies externes :</strong> Aucune</li>
+                <li><strong>CDN :</strong> Aucun</li>
+                <li><strong>Services tiers :</strong> Aucun</li>
+                <li><strong>Base de données :</strong> Aucune</li>
+                <li><strong>Tracking :</strong> Aucun</li>
+            </ul>
+            <p>
+                Le code source complet est disponible publiquement et peut être audité par quiconque souhaite vérifier nos affirmations.
+            </p>
+        </section>
+
+        <footer style="text-align: center; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #e0e0e0;">
+            <a href="index.html" class="back-link">← Retour à l'Accueil</a>
+            <p style="margin-top: 2rem; color: #666; font-size: 0.9rem;">
+                © 2026 100redes.eu | 
+                <a href="LICENSE">Licence MIT</a> | 
+                <a href="about.html">À Propos</a> | 
+                <a href="legal.html">Mentions Légales</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
