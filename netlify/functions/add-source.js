@@ -1,7 +1,7 @@
 // Netlify Serverless Function - Ajout sécurisé de sources
 // Les soumissions sont envoyées comme Issues GitHub pour modération
 
-const GITHUB_REPO = 'PapooLePapoo/events100redes';
+const GITHUB_REPO = '100redes/GDPR-Public-Life';
 const GITHUB_API = 'https://api.github.com';
 
 // Validation URL
