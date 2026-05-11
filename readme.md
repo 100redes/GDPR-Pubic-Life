@@ -4,9 +4,21 @@
 ### *Digital Sovereignty for Civil Society*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![RGPD Compliant](https://img.shields.io/badge/RGPD-Compliant-green.svg)](legal.html)
-[![Zero Tracking](https://img.shields.io/badge/Tracking-Zero-success.svg)](about.html)
-[![Open Source](https://img.shields.io/badge/Open-Source-orange.svg)](https://github.com/100redes/GDPR-Pubic-Life)
+[![RGPD Compliant](https://img.shields.io/badge/RGPD-Compliant-green.svg)](100redes/legal.html)
+[![Zero Tracking](https://img.shields.io/badge/Tracking-Zero-success.svg)](100redes/about.html)
+[![Open Source](https://img.shields.io/badge/Open-Source-orange.svg)](https://github.com/100redes/GDPR-Public-Life)
+[![Netlify Ready](https://img.shields.io/badge/Netlify-Ready-00C7B7.svg)](netlify.toml)
+
+---
+
+## 🚀 Version 2.0 - Mai 2026
+
+| Fonctionnalité | Description |
+|----------------|-------------|
+| 📅 **Événements** | 158+ événements culturels chargés depuis GitHub |
+| 📡 **Ajout Source** | Formulaire multilingue (6 langues) |
+| 🔒 **API Sécurisée** | Netlify Functions + GitHub Issues |
+| 🌐 **100% Statique** | Aucun serveur backend requis |
 
 ---
 
@@ -122,10 +134,28 @@ npx http-server
 
 Le site peut être déployé sur n'importe quel hébergeur de fichiers statiques :
 
-- **Netlify** : Drag & drop du dossier
+- **Netlify** : Drag & drop du dossier (recommandé)
 - **Vercel** : `vercel --prod`
 - **GitHub Pages** : Push vers branche `gh-pages`
 - **Serveur Apache/Nginx** : Copier les fichiers dans `/var/www/html/`
+
+### 🔧 Configuration Netlify (recommandé)
+
+1. **Connecter le repo** sur [Netlify](https://app.netlify.com)
+2. **Configurer les variables d'environnement** :
+   ```
+   GITHUB_TOKEN = ghp_xxxxxxxxxxxx
+   ```
+   > Le token doit avoir les permissions `repo` pour créer des Issues
+
+3. **Déployer** - Netlify utilisera automatiquement `netlify.toml`
+
+#### Fonctionnement des soumissions
+```
+Utilisateur → Formulaire → /api/add-source → GitHub Issue créée
+                                           ↓
+                              Modération manuelle → Ajout au scraper
+```
 
 ---
 
