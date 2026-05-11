@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Événements Culturels - 100redes.eu</title>
+    
+    <!-- Favicon intégré -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58.862274 58.866558'%3E%3Cg transform='translate(-117.475,-56.356249)'%3E%3Cpath fill='%231465ff' d='m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z'/%3E%3Cpath fill='%23ffffff' d='m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z'/%3E%3Ccircle fill='%2318207d' cx='153.08864' cy='89.09008' r='1.7464216'/%3E%3Ccircle fill='%2318207d' cx='141.04666' cy='89.09008' r='1.7464216'/%3E%3C/g%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            color: #000;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 2px solid #1465ff;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #1465ff;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #1465ff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid #1465ff;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            background: #1465ff;
+            color: #fff;
+        }
+        
+        /* Loading indicator */
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #1465ff;
+            font-size: 1.2rem;
+        }
+        
+        .loading::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+        
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+        
+        .data-source {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+        
+        .data-source a {
+            color: #1465ff;
+        }
+        
+        /* Barre de filtres */
+        .filters-bar {
+            margin-bottom: 1.2rem;
+        }
+        .filter-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+        .filter-row select,
+        .filter-row input {
+            width: 100%;
+            padding: 0.4rem 0.5rem;
+            border: 1px solid #d0d0d0;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.82rem;
+            background: #fff;
+            transition: border-color 0.2s;
+            color: #333;
+        }
+        .filter-row select:focus,
+        .filter-row input:focus {
+            outline: none;
+            border-color: #1465ff;
+        }
+        .filter-row-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1465ff;
+            font-weight: bold;
+            margin-bottom: 0.2rem;
+            margin-top: 0.3rem;
+        }
+        .reset-btn {
+            padding: 0.4rem 1.2rem;
+            background: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .reset-btn:hover {
+            background: #ff5252;
+        }
+        
+        /* Grille d'événements */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        /* Carte d'événement */
+        .event-card {
+            background: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: #1465ff;
+        }
+
+        /* Modale événement */
+        .event-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .event-modal-overlay.active { display: flex; }
+        .event-modal {
+            background: #fff;
+            border-radius: 12px;
+            max-width: 640px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .event-modal-close {
+            position: absolute;
+            top: 12px; right: 16px;
+            background: rgba(255,255,255,0.9);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+        }
+        .event-modal-close:hover { background: #f0f0f0; }
+        .event-modal-img {
+            width: 100%;
+            max-height: 280px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+        }
+        .event-modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+        .event-modal-body h2 {
+            margin: 0 0 1rem;
+            font-size: 1.4rem;
+            color: #1a1a2e;
+            line-height: 1.3;
+        }
+        .event-modal-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .event-modal-detail span:first-child { flex-shrink: 0; }
+        .event-modal-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .event-modal-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .event-modal-source {
+            margin-top: 1.2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            font-size: 0.8rem;
+            color: #999;
+        }
+        
+        .event-header {
+            background: linear-gradient(135deg, #1465ff 0%, #0d4acc 100%);
+            padding: 2rem 1.5rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+        
+        .event-body {
+            padding: 1.5rem;
+        }
+        
+        .event-info {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .event-icon {
+            font-size: 1.2rem;
+            min-width: 20px;
+        }
+        
+        .event-label {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.85rem;
+        }
+        
+        .event-value {
+            color: #000;
+            font-size: 0.9rem;
+        }
+        
+        .event-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #e6f0ff;
+            color: #1465ff;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Événements Culturels</h1>
+            <p class="tagline">Découvrez les événements près de chez vous</p>
+            <a href="index.html" class="back-link">← Retour à l'Accueil</a>
+            <a href="add-source.html" class="back-link" style="margin-left: 0.5rem;">📡 Ajouter une Source</a>
+            <p class="data-source">
+                📊 Données: <a href="https://github.com/PapooLePapoo/events100redes" target="_blank">GitHub events100redes</a>
+            </p>
+        </header>
+
+        <!-- Filtres -->
+        <div class="filters-bar">
+            <div class="filter-row-label">📍 Où</div>
+            <div class="filter-row">
+                <select id="countryFilter"><option value="">Pays</option></select>
+                <select id="cityFilter"><option value="">Ville</option></select>
+                <select id="placeFilter"><option value="">Lieu</option></select>
+            </div>
+            <div class="filter-row-label">🎭 Événement</div>
+            <div class="filter-row">
+                <input type="date" id="dateFilter" placeholder="Date">
+                <select id="categoryFilter"><option value="">Catégorie</option></select>
+                <select id="priceFilter">
+                    <option value="">Prix</option>
+                    <option value="free">Gratuit</option>
+                    <option value="paid">Payant</option>
+                </select>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem;">
+                <div><span class="count" style="font-size:1.1rem;font-weight:bold;color:#1465ff;" id="eventCount">0</span> événements</div>
+                <button class="reset-btn" onclick="resetFilters()">Réinitialiser</button>
+            </div>
+        </div>
+
+        <!-- Grille d'événements -->
+        <div class="events-grid" id="eventsGrid">
+            <div class="loading" style="grid-column:1/-1;">Chargement des événements depuis GitHub</div>
+        </div>
+    </div>
+
+    <script>
+        let eventsData = [];
+
+        // URL GitHub pour les événements
+        const GITHUB_BASE_URL = 'https://raw.githubusercontent.com/PapooLePapoo/events100redes/main/data/';
+        const INDEX_URL = GITHUB_BASE_URL + 'index.json';
+
+        // Charger les événements depuis GitHub
+        async function loadEvents() {
+            const grid = document.getElementById('eventsGrid');
+            grid.innerHTML = '<div class="loading" style="grid-column:1/-1;">Chargement des événements depuis GitHub</div>';
+            
+            try {
+                const resp = await fetch(INDEX_URL);
+                if (!resp.ok) throw new Error('Erreur de chargement');
+                
+                const data = await resp.json();
+                
+                // L'index contient directement un tableau d'événements dans "events"
+                const events = data.events || [];
+                
+                // Normaliser les données pour notre affichage
+                events.forEach(e => {
+                    // Adapter la structure (gratuit → prix.gratuit)
+                    if (e.gratuit !== undefined && !e.prix) {
+                        e.prix = { gratuit: e.gratuit, valeur: e.prix_valeur };
+                    }
+                    // Extraire l'image si c'est un objet
+                    if (e.image && typeof e.image === 'object') {
+                        e.image = e.image.url || null;
+                    }
+                });
+                
+                eventsData = events;
+                console.log(`✅ ${events.length} événements chargés depuis GitHub`);
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#e74c3c;padding:3rem;">❌ Impossible de charger les événements depuis GitHub.<br>Vérifiez votre connexion internet.</p>';
+            }
+            
+            return eventsData;
+        }
+
+        // --- Extraction helpers ---
+        function extractCity(event) {
+            const text = (event.lieu || '') + ' ' + (event.titre || '');
+            const cities = ['Coimbra', 'Lisboa', 'Porto', 'Faro', 'Braga', 'Aveiro', 'Évora', 'Setúbal', 'Leiria', 'Viseu', 'Lagos', 'Oeiras', 'Almada'];
+            for (const city of cities) {
+                if (text.toLowerCase().includes(city.toLowerCase())) return city;
+            }
+            return '';
+        }
+
+        function extractPlace(event) {
+            return event.lieu || '';
+        }
+
+        function extractCategory(event) {
+            // Utiliser les categories du JSON GitHub
+            const cats = event.categories || [];
+            if (cats.length === 0) return '';
+            
+            const catMap = {
+                'cinema': 'cinema',
+                'music': 'concert',
+                'Music': 'concert',
+                'exhibition': 'exposition',
+                'theater': 'theatre',
+                'theatre': 'theatre',
+                'conference': 'conference',
+                'literature': 'literatura',
+                'sport': 'sport',
+                'Food': 'gastronomie',
+                'Food & Drink': 'gastronomie',
+                'Yoga': 'wellness',
+                'Health & Wellness': 'wellness',
+                'Comedy': 'spectacle',
+                'Travel': 'tourisme'
+            };
+            
+            for (const cat of cats) {
+                if (catMap[cat]) return catMap[cat];
+            }
+            return cats[0]?.toLowerCase() || '';
+        }
+
+        // --- Peupler les sélecteurs dynamiquement ---
+        function populateSelectors() {
+            const countries = ['Portugal'];
+            fillSelect('countryFilter', countries, 'Pays');
+            updateCitySelector();
+            
+            const cats = [...new Set(eventsData.map(e => extractCategory(e)).filter(Boolean))].sort();
+            const catSelect = document.getElementById('categoryFilter');
+            catSelect.innerHTML = '<option value="">Catégorie</option>';
+            cats.forEach(c => {
+                const opt = document.createElement('option');
+                opt.value = c;
+                opt.textContent = getCategoryLabel(c);
+                catSelect.appendChild(opt);
+            });
+        }
+
+        function updateCitySelector() {
+            const cities = [...new Set(eventsData.map(e => extractCity(e)).filter(Boolean))].sort();
+            fillSelect('cityFilter', cities, 'Ville');
+            updatePlaceSelector();
+        }
+
+        function updatePlaceSelector() {
+            const city = document.getElementById('cityFilter').value;
+            let filtered = eventsData;
+            if (city) filtered = filtered.filter(e => extractCity(e) === city);
+            const places = [...new Set(filtered.map(e => extractPlace(e)).filter(Boolean))].sort();
+            fillSelect('placeFilter', places, 'Lieu');
+        }
+
+        function fillSelect(id, values, defaultLabel) {
+            const sel = document.getElementById(id);
+            const current = sel.value;
+            sel.innerHTML = `<option value="">${defaultLabel}</option>`;
+            values.forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v;
+                opt.textContent = v;
+                sel.appendChild(opt);
+            });
+            if (values.includes(current)) sel.value = current;
+        }
+
+        // --- Filtrage ---
+        function filterEvents() {
+            let filtered = eventsData;
+
+            const city = document.getElementById('cityFilter').value;
+            const place = document.getElementById('placeFilter').value;
+            const date = document.getElementById('dateFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            const price = document.getElementById('priceFilter').value;
+
+            if (city) filtered = filtered.filter(e => extractCity(e) === city);
+            if (place) filtered = filtered.filter(e => extractPlace(e) === place);
+            if (category) filtered = filtered.filter(e => extractCategory(e) === category);
+            if (date) {
+                filtered = filtered.filter(e => {
+                    const d0 = e.date_debut ? e.date_debut.split('T')[0] : '';
+                    const d1 = e.date_fin ? e.date_fin.split('T')[0] : d0;
+                    return d0 <= date && d1 >= date;
+                });
+            }
+            if (price === 'free') filtered = filtered.filter(e => e.gratuit || (e.prix && e.prix.gratuit));
+            if (price === 'paid') filtered = filtered.filter(e => !e.gratuit && (!e.prix || !e.prix.gratuit));
+
+            displayEvents(filtered);
+        }
+
+        // --- Affichage ---
+        function displayEvents(events) {
+            const grid = document.getElementById('eventsGrid');
+            document.getElementById('eventCount').textContent = events.length;
+
+            if (events.length === 0) {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;color:#666;padding:3rem;">Aucun événement trouvé avec ces critères.</p>';
+                return;
+            }
+
+            grid.innerHTML = events.map(event => {
+                const category = extractCategory(event);
+                const dateDebut = event.date_debut || '';
+                const dateFin = event.date_fin || '';
+                const isSameDay = dateDebut.split('T')[0] === dateFin.split('T')[0];
+                const isGratuit = event.gratuit || (event.prix && event.prix.gratuit);
+                const prixText = isGratuit ? '🎁 Gratuit' : (event.prix_valeur ? event.prix_valeur + ' €' : '');
+                const imageUrl = event.image || '';
+
+                return `
+                <div class="event-card" onclick="viewEvent('${event.id}')">
+                    ${imageUrl ? `<div style="width:100%;height:160px;overflow:hidden;border-radius:4px 4px 0 0;"><img src="${imageUrl}" alt="${event.titre}" style="width:100%;height:100%;object-fit:cover;" onerror="this.parentElement.style.display='none'"></div>` : ''}
+                    <div class="event-header">
+                        <div class="event-title">${event.titre || ''}</div>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-info"><span class="event-icon">📅</span><div><div class="event-label">Date:</div><div class="event-value">${formatDate(dateDebut)}${!isSameDay && dateFin ? ' → ' + formatDate(dateFin) : ''}</div></div></div>
+                        <div class="event-info"><span class="event-icon">📍</span><div><div class="event-label">Lieu:</div><div class="event-value">${event.lieu || extractCity(event) || 'Non précisé'}</div></div></div>
+                        ${prixText ? `<div class="event-info"><span class="event-icon">💰</span><div><div class="event-label">Prix:</div><div class="event-value">${prixText}</div></div></div>` : ''}
+                        ${category ? `<span class="event-category">${getCategoryLabel(category)}</span>` : ''}
+                        ${event.ongoing ? '<span class="event-category" style="background:#27ae60;color:#fff;">🔄 En cours</span>' : ''}
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short', year: 'numeric' });
+        }
+
+        function getCategoryLabel(category) {
+            const labels = {
+                cinema: '🎬 Cinéma', 
+                concert: '🎵 Concert', 
+                exposition: '🎨 Exposition', 
+                theatre: '🎭 Théâtre',
+                festival: '🎉 Festival', 
+                conference: '💬 Conférence', 
+                atelier: '🛠️ Atelier', 
+                literatura: '📚 Littérature',
+                sport: '⚽ Sport',
+                gastronomie: '🍽️ Gastronomie',
+                wellness: '🧘 Bien-être',
+                spectacle: '🎤 Spectacle',
+                tourisme: '🗺️ Tourisme'
+            };
+            return labels[category] || category;
+        }
+
+        // --- Modale ---
+        function viewEvent(id) {
+            const event = eventsData.find(e => e.id === id);
+            if (!event) return;
+            const dateDebut = event.date_debut || '';
+            const dateFin = event.date_fin || '';
+            const isSameDay = dateDebut.split('T')[0] === dateFin.split('T')[0];
+            const category = extractCategory(event);
+            const isGratuit = event.gratuit || (event.prix && event.prix.gratuit);
+            const prixText = isGratuit ? '🎁 Gratuit' : (event.prix_valeur ? event.prix_valeur + ' €' : '');
+
+            const modal = document.getElementById('eventModal');
+            modal.querySelector('.event-modal-content').innerHTML = `
+                <button class="event-modal-close" onclick="closeModal()">&times;</button>
+                ${event.image ? `<img class="event-modal-img" src="${event.image}" alt="${event.titre}" onerror="this.style.display='none'">` : ''}
+                <div class="event-modal-body">
+                    <h2>${event.titre || ''}</h2>
+                    <div class="event-modal-detail"><span>📅</span><span><strong>Date :</strong> ${formatDate(dateDebut)}${!isSameDay && dateFin ? ' → ' + formatDate(dateFin) : ''}</span></div>
+                    <div class="event-modal-detail"><span>📍</span><span><strong>Lieu :</strong> ${event.lieu || extractCity(event) || 'Non précisé'}</span></div>
+                    ${prixText ? `<div class="event-modal-detail"><span>💰</span><span><strong>Prix :</strong> ${prixText}</span></div>` : ''}
+                    <div class="event-modal-badges">
+                        ${category ? `<span class="event-modal-badge" style="background:#eef;color:#1465ff;">${getCategoryLabel(category)}</span>` : ''}
+                        ${event.ongoing ? '<span class="event-modal-badge" style="background:#e8f5e9;color:#27ae60;">🔄 En cours</span>' : ''}
+                    </div>
+                    ${event.lien_detail ? `<div style="margin-top:1rem;"><a href="${event.lien_detail}" target="_blank" rel="noopener" style="color:#1465ff;">🔗 Voir sur le site source</a></div>` : ''}
+                    <div class="event-modal-source">Source : ${event.source || 'inconnue'}</div>
+                </div>
+            `;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('eventModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // --- Réinitialiser ---
+        function resetFilters() {
+            document.getElementById('countryFilter').value = '';
+            document.getElementById('cityFilter').value = '';
+            document.getElementById('placeFilter').value = '';
+            document.getElementById('dateFilter').value = '';
+            document.getElementById('categoryFilter').value = '';
+            document.getElementById('priceFilter').value = '';
+            updateCitySelector();
+            filterEvents();
+        }
+
+        // --- Événements de changement ---
+        document.getElementById('countryFilter').addEventListener('change', () => { updateCitySelector(); filterEvents(); });
+        document.getElementById('cityFilter').addEventListener('change', () => { updatePlaceSelector(); filterEvents(); });
+        document.getElementById('placeFilter').addEventListener('change', filterEvents);
+        document.getElementById('dateFilter').addEventListener('change', filterEvents);
+        document.getElementById('categoryFilter').addEventListener('change', filterEvents);
+        document.getElementById('priceFilter').addEventListener('change', filterEvents);
+
+        // --- Initialisation ---
+        window.addEventListener('DOMContentLoaded', async () => {
+            await loadEvents();
+            if (eventsData.length > 0) {
+                populateSelectors();
+                displayEvents(eventsData);
+            }
+        });
+    </script>
+
+    <!-- Modale événement -->
+    <div id="eventModal" class="event-modal-overlay" onclick="if(event.target===this)closeModal()">
+        <div class="event-modal">
+            <div class="event-modal-content"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -132,18 +132,40 @@ Le site peut être déployé sur n'importe quel hébergeur de fichiers statiques
 ## 📁 Structure du Projet
 
 ```
-100redes.eu/
-├── index.html              # Page d'accueil avec liste d'événements
-├── about.html              # Page "À propos" multilingue
-├── donate.html             # Page de donation
-├── legal.html              # Mentions légales et politique de confidentialité
-├── LICENSE                 # Licence MIT
-├── README.md               # Ce fichier
-├── TECHNICAL_AUDIT.md      # Audit technique de conformité
-├── Portugal.svg            # Carte du Portugal (SVG)
-├── favicon.svg             # Favicon du site
-└── backups/                # Sauvegardes automatiques
+GDPR-Public-Life/
+├── 100redes/
+│   ├── index.html          # Page d'accueil
+│   ├── events.html         # 📅 Page événements (données GitHub)
+│   ├── add-source.html     # 📡 Formulaire ajout source (multilingue)
+│   ├── about.html          # Page "À propos" multilingue
+│   ├── legal.html          # Mentions légales et politique de confidentialité
+│   ├── favicon.svg         # Favicon du site
+│   └── LICENSE             # Licence MIT
+├── netlify/
+│   └── functions/
+│       └── add-source.js   # 🔒 API serverless (soumissions sécurisées)
+├── netlify.toml            # Configuration Netlify
+└── readme.md               # Ce fichier
 ```
+
+### 🆕 Nouvelles Fonctionnalités
+
+#### 📅 Page Événements (`events.html`)
+- Charge **158+ événements** depuis [GitHub events100redes](https://github.com/PapooLePapoo/events100redes)
+- Filtres par ville, catégorie, date, prix
+- Affichage en grille responsive
+- Modale de détail sans redirection externe
+
+#### 📡 Formulaire Ajout Source (`add-source.html`)
+- **6 langues** : FR, EN, PT, ES, DE, IT
+- Détection automatique de la langue du navigateur
+- Validation URL côté client et serveur
+- Soumissions créent des **Issues GitHub** pour modération
+
+#### 🔒 API Serverless (Netlify Functions)
+- Validation et sanitization des entrées
+- Stockage sécurisé via GitHub Issues
+- Token GitHub en variable d'environnement (jamais exposé)
 
 ---
 

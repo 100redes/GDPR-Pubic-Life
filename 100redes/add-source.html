@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter une Source - 100redes.eu</title>
+    
+    <!-- Favicon intégré -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 58.862274 58.866558'%3E%3Cg transform='translate(-117.475,-56.356249)'%3E%3Cpath fill='%231465ff' d='m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z'/%3E%3Cpath fill='%23ffffff' d='m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z'/%3E%3Ccircle fill='%2318207d' cx='153.08864' cy='89.09008' r='1.7464216'/%3E%3Ccircle fill='%2318207d' cx='141.04666' cy='89.09008' r='1.7464216'/%3E%3C/g%3E%3C/svg%3E">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fff;
+            color: #000;
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+        }
+        
+        
+        /* Sélecteur de langue */
+        .lang-selector {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem;
+            background: #f5f5f5;
+            border-bottom: 1px solid #e0e0e0;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            padding: 0.4rem 0.8rem;
+            border: 2px solid #1465ff;
+            background: transparent;
+            color: #1465ff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: #1465ff;
+            color: #fff;
+        }
+        
+        /* Fish Container - Header */
+        .fish-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem 1rem 1rem;
+            position: relative;
+        }
+        
+        .fish-container-anim {
+            margin-bottom: 1rem;
+            position: relative;
+            width: 120px;
+            height: 120px;
+            z-index: 100;
+            overflow: visible;
+            animation: containerFloat 5s infinite ease-in-out;
+        }
+        
+        .fish-logo {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            cursor: pointer;
+        }
+        
+        .fish-group {
+            animation: fishJumpRight 20s infinite ease-in-out;
+            transform-origin: 50% 56%;
+            transform-box: fill-box;
+        }
+        
+        .water { fill: #1465ff; }
+        
+        @keyframes containerFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-2px); }
+        }
+        
+        .fish-eye {
+            animation: eyeLook 7s infinite ease-in-out;
+            transform-origin: center;
+        }
+        
+        .fish-eye-1 { animation-delay: 0s; }
+        .fish-eye-2 { animation-delay: 0.15s; }
+        
+        @keyframes eyeLook {
+            0%, 100% { transform: translate(0, 0); fill: #18207d; }
+            9% { fill: #18207d; }
+            10% { fill: #ffffff; }
+            12% { fill: #18207d; }
+            20% { transform: translate(0.3px, 0); }
+            50% { transform: translate(0, 0); }
+            70% { transform: translate(-0.4px, 0.2px); }
+            90% { transform: translate(0, 0); }
+        }
+        
+        @keyframes fishJumpRight {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            19% { transform: translate(0, 0) rotate(0deg); }
+            21% { transform: translate(8px, 20px) rotate(-15deg); }
+            25% { transform: translate(10px, 70px) rotate(-10deg); }
+            29% { transform: translate(60px, 90px) rotate(-90deg); }
+            33% { transform: translate(98px, 40px) rotate(-170deg); }
+            37% { transform: translate(75px, -25px) rotate(-220deg); }
+            41% { transform: translate(30px, -55px) rotate(-310deg); }
+            45% { transform: translate(2px, -15px) rotate(-358deg); }
+            47% { transform: translate(0, 0) rotate(-360deg); }
+            100% { transform: translate(0, 0) rotate(-360deg); }
+        }
+        
+        .site-name {
+            color: #1465ff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+        
+        /* Main Content */
+        .main-content {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            color: #1465ff;
+        }
+        
+        .intro-text {
+            background: #f0f6ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            border: 1px solid #d0e0ff;
+        }
+        
+        .intro-text p { margin-bottom: 1rem; }
+        .intro-text p:last-child { margin-bottom: 0; }
+        
+        .highlight {
+            background: #1465ff;
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        /* Form */
+        .submit-form {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .form-group { margin-bottom: 1.5rem; }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #1465ff;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #d0d0d0;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .url-input-wrapper {
+            display: flex;
+            align-items: stretch;
+        }
+        
+        .url-prefix {
+            background: #1465ff;
+            color: #fff;
+            padding: 0.8rem 0.8rem;
+            border: 2px solid #1465ff;
+            border-right: none;
+            border-radius: 6px 0 0 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .url-input-wrapper input {
+            border-radius: 0 6px 6px 0;
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #1465ff;
+        }
+        
+        .form-group input.error { border-color: #e74c3c; }
+        .form-group input.valid { border-color: #27ae60; }
+        
+        .form-hint {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        
+        .error-message.visible { display: block; }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #1465ff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            background: #0d4acc;
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            background: #27ae60;
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        
+        .success-message.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .success-message h3 { margin-bottom: 0.5rem; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Privacy Note */
+        .privacy-note {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #666;
+        }
+        
+        .privacy-note strong { color: #1465ff; }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            body::before {
+                font-size: 2rem;
+            }
+            
+            .main-content { padding: 1rem; }
+            .page-title { font-size: 1.3rem; }
+            .submit-form { padding: 1.5rem; }
+            
+            .url-prefix {
+                padding: 0.8rem 0.5rem;
+                font-size: 0.85rem;
+            }
+            
+            .lang-selector { gap: 0.3rem; }
+            .lang-btn { 
+                padding: 0.3rem 0.5rem; 
+                font-size: 0.7rem; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sélecteur de langue -->
+    <div class="lang-selector">
+        <button class="lang-btn active" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="pt">PT</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="it">IT</button>
+    </div>
+    
+    <!-- Fish Container -->
+    <div class="fish-container">
+        <div class="fish-container-anim">
+            <svg class="fish-logo" viewBox="0 0 58.862274 58.866558" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(-117.475,-56.356249)">
+                    <path class="water" d="m 146.32231,56.361279 c -9.31153,0.08654 -18.37603,4.968909 -23.61171,12.66367 -6.055,8.459264 -6.90343,20.211875 -2.30846,29.519409 3.59732,7.646612 10.69373,13.445132 18.84004,15.625612 4.62365,1.3708 9.57864,1.33211 14.2628,0.29365 11.08343,-2.38291 20.25984,-11.79379 22.30624,-22.952472 0.92099,-5.14749 0.68055,-10.550321 -1.10224,-15.494645 -3.41996,-10.062361 -12.75353,-17.782881 -23.26731,-19.306942 -1.69213,-0.263253 -3.40711,-0.379786 -5.11936,-0.348282 z" />
+                    <g class="fish-group">
+                        <path class="fish-body" style="fill:#ffffff;" d="m 146.93727,63.419324 c -1.22161,1.468647 -1.97712,3.320252 -2.97291,4.9585 -0.76913,1.266952 -1.35253,2.720681 -2.23393,3.873651 -3.49868,1.68945 -6.96181,4.097504 -8.47466,7.827361 -1.40315,2.871239 -1.41321,6.189609 -0.89953,9.278238 1.44932,6.182948 7.27386,11.073636 13.62329,11.346416 3.92592,0.16859 7.91666,-1.20563 10.7426,-3.96747 2.88231,-2.746346 4.51402,-6.746473 4.25495,-10.734093 0.0834,-3.787704 -1.77508,-7.411003 -4.37871,-10.068693 -1.27667,-1.313773 -2.96364,-2.16552 -4.3507,-3.293939 -1.69714,-3.079476 -3.25883,-6.255586 -5.18314,-9.197456 -0.0363,-0.02608 -0.0831,-0.03594 -0.12726,-0.02252 z" />
+                        <circle class="fish-eye fish-eye-1" style="fill:#18207d;" cx="153.08864" cy="89.09008" r="1.7464216" />
+                        <circle class="fish-eye fish-eye-2" style="fill:#18207d;" cx="141.04666" cy="89.09008" r="1.7464216" />
+                    </g>
+                </g>
+            </svg>
+        </div>
+        <div class="site-name">100redes.eu</div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title" data-i18n="pageTitle">📡 Ajouter une Source d'Événements</h1>
+        
+        <div class="intro-text">
+            <p data-i18n="intro1">
+                Tu utilises un site web pour consulter les événements de ta région ? 
+                <strong data-i18n="intro1Bold">Partage-le avec nous !</strong>
+            </p>
+            <p data-i18n="intro2">
+                En soumettant l'adresse du site, ses événements seront visibles sur cette plateforme 
+                dans les <span class="highlight" data-i18n="days">5 jours</span> qui suivent, et ce <strong data-i18n="forever">pour toujours</strong>.
+            </p>
+            <p data-i18n="intro3">
+                🔒 <strong data-i18n="noTracking">Aucun traçage</strong> — nous récupérons uniquement les informations publiques 
+                des événements, sans collecter tes données personnelles.
+            </p>
+        </div>
+        
+        <form class="submit-form" id="sourceForm">
+            <div class="form-group">
+                <label for="siteUrl" data-i18n="formLabel">Adresse du site d'événements</label>
+                <div class="url-input-wrapper">
+                    <span class="url-prefix">https://</span>
+                    <input 
+                        type="text" 
+                        id="siteUrl" 
+                        name="siteUrl" 
+                        data-i18n-placeholder="placeholder"
+                        placeholder="agenda.maville.pt/"
+                        autocomplete="url"
+                        required
+                    >
+                </div>
+                <p class="form-hint" data-i18n="formHint">Entrez l'adresse sans le https://</p>
+                <p class="error-message" id="errorMessage"></p>
+            </div>
+            
+            <button type="submit" class="submit-btn" id="submitBtn" data-i18n="submitBtn">
+                🚀 Soumettre cette source
+            </button>
+            
+            <div class="success-message" id="successMessage">
+                <h3 data-i18n="successTitle">✅ Source ajoutée avec succès !</h3>
+                <p data-i18n="successMsg">Nous analyserons ce site dans les prochains jours. Merci pour ta contribution !</p>
+            </div>
+        </form>
+        
+        <div class="privacy-note">
+            <strong data-i18n="privacyTitle">🛡️ Respect de ta vie privée</strong><br>
+            <span data-i18n="privacyText">Cette soumission est anonyme. Nous ne collectons ni ton IP, ni aucune donnée personnelle.</span>
+        </div>
+    </main>
+    
+    <footer>
+        <p>100redes.eu — <span data-i18n="footer">Accès libre à la vie publique</span></p>
+    </footer>
+    
+    <script>
+        // ========== TRADUCTIONS ==========
+        const translations = {
+            fr: {
+                pageTitle: "📡 Ajouter une Source d'Événements",
+                intro1: "Tu utilises un site web pour consulter les événements de ta région ?",
+                intro1Bold: "Partage-le avec nous !",
+                intro2: "En soumettant l'adresse du site, ses événements seront visibles sur cette plateforme dans les",
+                days: "5 jours",
+                forever: "pour toujours",
+                intro3: "— nous récupérons uniquement les informations publiques des événements, sans collecter tes données personnelles.",
+                noTracking: "Aucun traçage",
+                formLabel: "Adresse du site d'événements",
+                placeholder: "agenda.maville.pt/",
+                formHint: "Entrez l'adresse sans le https://",
+                submitBtn: "🚀 Soumettre cette source",
+                submitting: "⏳ Envoi en cours...",
+                successTitle: "✅ Source ajoutée avec succès !",
+                successMsg: "Nous analyserons ce site dans les prochains jours. Merci pour ta contribution !",
+                privacyTitle: "🛡️ Respect de ta vie privée",
+                privacyText: "Cette soumission est anonyme. Nous ne collectons ni ton IP, ni aucune donnée personnelle.",
+                footer: "Accès libre à la vie publique",
+                errorInvalid: "L'adresse ne semble pas être un site valide.",
+                errorDomain: "L'adresse doit inclure un domaine valide (ex: .pt, .com, .eu).",
+                errorLocal: "Les adresses locales ne sont pas acceptées.",
+                errorFormat: "Format d'adresse invalide.",
+                errorGeneral: "Une erreur est survenue. Veuillez réessayer."
+            },
+            en: {
+                pageTitle: "📡 Add an Events Source",
+                intro1: "Do you use a website to check events in your area?",
+                intro1Bold: "Share it with us!",
+                intro2: "By submitting the website address, its events will be visible on this platform within",
+                days: "5 days",
+                forever: "forever",
+                intro3: "— we only collect public event information, without collecting your personal data.",
+                noTracking: "No tracking",
+                formLabel: "Events website address",
+                placeholder: "agenda.mycity.com/",
+                formHint: "Enter the address without https://",
+                submitBtn: "🚀 Submit this source",
+                submitting: "⏳ Sending...",
+                successTitle: "✅ Source added successfully!",
+                successMsg: "We will analyze this site in the coming days. Thank you for your contribution!",
+                privacyTitle: "🛡️ Privacy respected",
+                privacyText: "This submission is anonymous. We collect neither your IP nor any personal data.",
+                footer: "Free access to public life",
+                errorInvalid: "The address does not appear to be a valid website.",
+                errorDomain: "The address must include a valid domain (e.g., .com, .eu, .org).",
+                errorLocal: "Local addresses are not accepted.",
+                errorFormat: "Invalid address format.",
+                errorGeneral: "An error occurred. Please try again."
+            },
+            pt: {
+                pageTitle: "📡 Adicionar uma Fonte de Eventos",
+                intro1: "Usas um site para consultar os eventos da tua região?",
+                intro1Bold: "Partilha connosco!",
+                intro2: "Ao submeter o endereço do site, os seus eventos ficarão visíveis nesta plataforma dentro de",
+                days: "5 dias",
+                forever: "para sempre",
+                intro3: "— recolhemos apenas informações públicas dos eventos, sem recolher os teus dados pessoais.",
+                noTracking: "Sem rastreamento",
+                formLabel: "Endereço do site de eventos",
+                placeholder: "agenda.minhacidade.pt/",
+                formHint: "Introduz o endereço sem o https://",
+                submitBtn: "🚀 Submeter esta fonte",
+                submitting: "⏳ A enviar...",
+                successTitle: "✅ Fonte adicionada com sucesso!",
+                successMsg: "Analisaremos este site nos próximos dias. Obrigado pela tua contribuição!",
+                privacyTitle: "🛡️ Respeito pela tua privacidade",
+                privacyText: "Esta submissão é anónima. Não recolhemos o teu IP nem quaisquer dados pessoais.",
+                footer: "Acesso livre à vida pública",
+                errorInvalid: "O endereço não parece ser um site válido.",
+                errorDomain: "O endereço deve incluir um domínio válido (ex: .pt, .com, .eu).",
+                errorLocal: "Endereços locais não são aceites.",
+                errorFormat: "Formato de endereço inválido.",
+                errorGeneral: "Ocorreu um erro. Por favor, tenta novamente."
+            },
+            es: {
+                pageTitle: "📡 Añadir una Fuente de Eventos",
+                intro1: "¿Usas un sitio web para consultar eventos de tu zona?",
+                intro1Bold: "¡Compártelo con nosotros!",
+                intro2: "Al enviar la dirección del sitio, sus eventos serán visibles en esta plataforma en",
+                days: "5 días",
+                forever: "para siempre",
+                intro3: "— solo recopilamos información pública de eventos, sin recopilar tus datos personales.",
+                noTracking: "Sin rastreo",
+                formLabel: "Dirección del sitio de eventos",
+                placeholder: "agenda.miciudad.es/",
+                formHint: "Introduce la dirección sin el https://",
+                submitBtn: "🚀 Enviar esta fuente",
+                submitting: "⏳ Enviando...",
+                successTitle: "✅ ¡Fuente añadida con éxito!",
+                successMsg: "Analizaremos este sitio en los próximos días. ¡Gracias por tu contribución!",
+                privacyTitle: "🛡️ Respeto a tu privacidad",
+                privacyText: "Este envío es anónimo. No recopilamos tu IP ni ningún dato personal.",
+                footer: "Acceso libre a la vida pública",
+                errorInvalid: "La dirección no parece ser un sitio válido.",
+                errorDomain: "La dirección debe incluir un dominio válido (ej: .es, .com, .eu).",
+                errorLocal: "Las direcciones locales no son aceptadas.",
+                errorFormat: "Formato de dirección inválido.",
+                errorGeneral: "Ocurrió un error. Por favor, inténtalo de nuevo."
+            },
+            de: {
+                pageTitle: "📡 Eine Veranstaltungsquelle hinzufügen",
+                intro1: "Nutzt du eine Website, um Veranstaltungen in deiner Region zu finden?",
+                intro1Bold: "Teile sie mit uns!",
+                intro2: "Wenn du die Website-Adresse einreichst, werden die Veranstaltungen auf dieser Plattform innerhalb von",
+                days: "5 Tagen",
+                forever: "für immer",
+                intro3: "sichtbar sein — wir sammeln nur öffentliche Veranstaltungsinformationen, ohne deine persönlichen Daten zu erfassen.",
+                noTracking: "Kein Tracking",
+                formLabel: "Adresse der Veranstaltungswebsite",
+                placeholder: "agenda.meinestadt.de/",
+                formHint: "Gib die Adresse ohne https:// ein",
+                submitBtn: "🚀 Diese Quelle einreichen",
+                submitting: "⏳ Wird gesendet...",
+                successTitle: "✅ Quelle erfolgreich hinzugefügt!",
+                successMsg: "Wir werden diese Seite in den nächsten Tagen analysieren. Vielen Dank für deinen Beitrag!",
+                privacyTitle: "🛡️ Deine Privatsphäre wird respektiert",
+                privacyText: "Diese Einreichung ist anonym. Wir erfassen weder deine IP noch persönliche Daten.",
+                footer: "Freier Zugang zum öffentlichen Leben",
+                errorInvalid: "Die Adresse scheint keine gültige Website zu sein.",
+                errorDomain: "Die Adresse muss eine gültige Domain enthalten (z.B. .de, .com, .eu).",
+                errorLocal: "Lokale Adressen werden nicht akzeptiert.",
+                errorFormat: "Ungültiges Adressformat.",
+                errorGeneral: "Ein Fehler ist aufgetreten. Bitte versuche es erneut."
+            },
+            it: {
+                pageTitle: "📡 Aggiungi una Fonte di Eventi",
+                intro1: "Usi un sito web per consultare gli eventi della tua zona?",
+                intro1Bold: "Condividilo con noi!",
+                intro2: "Inviando l'indirizzo del sito, i suoi eventi saranno visibili su questa piattaforma entro",
+                days: "5 giorni",
+                forever: "per sempre",
+                intro3: "— raccogliamo solo informazioni pubbliche sugli eventi, senza raccogliere i tuoi dati personali.",
+                noTracking: "Nessun tracciamento",
+                formLabel: "Indirizzo del sito di eventi",
+                placeholder: "agenda.miacitta.it/",
+                formHint: "Inserisci l'indirizzo senza https://",
+                submitBtn: "🚀 Invia questa fonte",
+                submitting: "⏳ Invio in corso...",
+                successTitle: "✅ Fonte aggiunta con successo!",
+                successMsg: "Analizzeremo questo sito nei prossimi giorni. Grazie per il tuo contributo!",
+                privacyTitle: "🛡️ Rispetto della tua privacy",
+                privacyText: "Questo invio è anonimo. Non raccogliamo il tuo IP né alcun dato personale.",
+                footer: "Accesso libero alla vita pubblica",
+                errorInvalid: "L'indirizzo non sembra essere un sito valido.",
+                errorDomain: "L'indirizzo deve includere un dominio valido (es: .it, .com, .eu).",
+                errorLocal: "Gli indirizzi locali non sono accettati.",
+                errorFormat: "Formato indirizzo non valido.",
+                errorGeneral: "Si è verificato un errore. Per favore riprova."
+            }
+        };
+        
+        let currentLang = 'fr';
+        
+        // Appliquer les traductions
+        function applyTranslations(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    el.textContent = t[key];
+                }
+            });
+            
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (t[key]) {
+                    el.placeholder = t[key];
+                }
+            });
+            
+            // Update lang buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            
+            document.documentElement.lang = lang;
+        }
+        
+        // Gestion des boutons de langue
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyTranslations(btn.dataset.lang);
+            });
+        });
+        
+        // ========== FORMULAIRE ==========
+        const form = document.getElementById('sourceForm');
+        const urlInput = document.getElementById('siteUrl');
+        const errorMessage = document.getElementById('errorMessage');
+        const successMessage = document.getElementById('successMessage');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        urlInput.addEventListener('input', function() {
+            validateUrl(this.value, false);
+        });
+        
+        function validateUrl(url, showError = true) {
+            const t = translations[currentLang];
+            urlInput.classList.remove('error', 'valid');
+            errorMessage.classList.remove('visible');
+            
+            if (!url) return false;
+            
+            const fullUrl = 'https://' + url;
+            
+            try {
+                const urlObj = new URL(fullUrl);
+                
+                if (!urlObj.hostname || urlObj.hostname.length < 3) {
+                    if (showError) showValidationError(t.errorInvalid);
+                    urlInput.classList.add('error');
+                    return false;
+                }
+                
+                if (!urlObj.hostname.includes('.')) {
+                    if (showError) showValidationError(t.errorDomain);
+                    urlInput.classList.add('error');
+                    return false;
+                }
+                
+                if (urlObj.hostname === 'localhost' || urlObj.hostname.startsWith('192.168.') || urlObj.hostname.startsWith('10.')) {
+                    if (showError) showValidationError(t.errorLocal);
+                    urlInput.classList.add('error');
+                    return false;
+                }
+                
+                urlInput.classList.add('valid');
+                return true;
+                
+            } catch (e) {
+                if (showError) showValidationError(t.errorFormat);
+                urlInput.classList.add('error');
+                return false;
+            }
+        }
+        
+        function showValidationError(message) {
+            errorMessage.textContent = message;
+            errorMessage.classList.add('visible');
+        }
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const t = translations[currentLang];
+            const url = urlInput.value.trim();
+            
+            if (!validateUrl(url, true)) return;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = t.submitting;
+            
+            try {
+                const fullUrl = 'https://' + url;
+                const payload = {
+                    site: fullUrl,
+                    lang: currentLang
+                };
+                
+                // Envoyer à la fonction Netlify
+                let saved = false;
+                try {
+                    const response = await fetch('/api/add-source', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (response.ok) {
+                        const result = await response.json();
+                        saved = result.success;
+                        console.log('✅ Soumis via API:', result);
+                    }
+                } catch (apiError) {
+                    console.warn('API non disponible, fallback localStorage');
+                }
+                
+                // Fallback: localStorage si API non disponible
+                if (!saved) {
+                    const existing = JSON.parse(localStorage.getItem('proto-sites-to-scan') || '{"sites":[]}');
+                    existing.sites.push({ ...payload, date: new Date().toISOString() });
+                    localStorage.setItem('proto-sites-to-scan', JSON.stringify(existing));
+                    console.log('📝 Sauvé en local:', payload);
+                }
+                
+                successMessage.classList.add('visible');
+                form.reset();
+                urlInput.classList.remove('valid');
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                showValidationError(t.errorGeneral);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = t.submitBtn;
+            }
+        });
+        
+        urlInput.addEventListener('focus', function() {
+            successMessage.classList.remove('visible');
+        });
+        
+        // Détecter la langue du navigateur
+        const browserLang = navigator.language.slice(0, 2);
+        if (translations[browserLang]) {
+            applyTranslations(browserLang);
+        }
+    </script>
+</body>
+</html>
